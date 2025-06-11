@@ -1,0 +1,2768 @@
+
+<!--<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">--->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>CMS - uPickit</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="icon" type="image/ico" href="favicon.ico" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.treeview.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui-start-1.8.16.custom.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui-start-1.8.1.custom.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-countdown-1.5.4.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui-additional.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.multiselect.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.dataTables.css') }}" type="text/css"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.dataTables_themeroller.css') }}" type="text/css" />
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/showLoading.css') }}" media="screen" type="text/css"/>
+	
+	<!--[if IE 7]>
+    	<link rel="stylesheet" type="text/css" href="assets/css/ie7.css" />
+    <![endif]-->
+	<!--[if lte IE 6]>
+    	<link rel="stylesheet" type="text/css" href="assets/css/ie6.css" />
+    <![endif]-->
+
+	<script type="text/javascript" src="{{ url_for('static', filename='js/min/jquery-3.3.1.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/min/jquery-ui-1.12.1.custom.min.js') }}"></script>
+	<script language="javascript" src="{{ url_for('static', filename='js/tablesorter.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/min/jquery-tablesorter-pager-2.0.js') }}"></script>
+	<script language="javascript" src="{{ url_for('static', filename='js/tablesorter_filter.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/min/jquery-corner-1.99.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.treeview.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-ui-buttons-1.0.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/min/vtip-min-2.0.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/min/jquery-jeditable-1.7.1.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/min/jquery-chainedSelects.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/min/jquery-ui-timepicker-addon-1.6.3.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/min/jquery.multiselect.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/min/jquery.multiselect-3.0.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/min/jquery.dataTables.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.alerts.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.showLoading.js') }}"></script>
+	<script type="text/javascript" charset="utf-8" src="{{ url_for('static', filename='js/ColReorder.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/basic.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/bulk.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/vtip-bulk-2.0.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/softci.js') }}"></script>
+
+	
+
+</head>
+<body>
+    <div id="statusBox" onclick="$(this).stop().fadeOut();">&nbsp;</div>
+    <noscript> 
+        <div style="border:2px solid black; background-color:#FFFF00; position:absolute; display:block; width:400px; height:150px; left:5px; top:10px; padding:10px; text-align:center;">
+            <br />
+            <h2><strong>Sorry, you must have JavaScript enabled to access this site.</strong></h2>
+            <br />
+            <strong>Contact the Corporate Helpdesk if you<br />need assistance enabling JavaScript.</strong>
+            <br /><br />
+        </div>
+    </noscript> 
+	
+    <div class="header_bar">
+        <div class="header_left">
+            <div class="site_name_w_slogan">CMS Portal</div> 
+            <div class="site_slogan">Configuration Management System</div>
+            <div class="welcome_message">Welcome, Sarthak Dhar!
+			
+			</div>
+            <div id="xyzstatus" style="position:absolute; top:2px; left:35%; display:none; cursor:pointer;"></div>
+        </div>
+	</div>
+	<table width="100%" style="margin-top:5px;">
+        <tr>
+            <td valign="top" style="width:180px;">
+            	
+		
+                
+<div id="createDoD"></div>
+
+
+  
+
+<ul style="margin-top:1px;padding:0px " class="menu">
+	<li><a href="{{ url_for ('home') }}" ><span>Home</span></a></li>
+	<li id="custExpand"><a><span>External Links</span></a></li>
+    	<div id="custlinks" style="display:none!important">
+    		
+                      <li><a href="http://cmdb.it.att.com"  target='_blank'>
+                       <span>CMDB</span></a>
+                    </li>
+                    
+                      <li><a href="http://cma.it.att.com/index.cfm?page=41987"
+                        target='_blank'>
+                       <span>CMA</span></a>
+                    </li>
+                    
+                      <li><a href="https://tspace.web.att.com/communities/service/html/communityoverview?communityUuid=76487320-b5dc-4565-8bcd-bbc6e0ec1c6a"
+                        target='_blank'>
+                       <span>New CMA Link</span></a>
+                    </li>
+                    
+        </div>
+</ul>
+
+<div class="menuHeader" >CMDB Tools</div>
+<ul class="menu menu3">
+ <li><a href="{{ url_for('catalog') }}" ><span>Catalog</span></a></li>
+    <li><a href="{{ url_for('dashboard') }}" ><span>Dashboard</span></a></li>
+</ul>
+
+<div class="menuHeader">SoftCI TSA (SCM)</div>
+<ul class="menu menu2">
+   	<li><a href="?do=src.main" ><span>CI Search</span></a></li>
+   	<li><a href="?do=src.create" ><span>CI Create</span></a></li>
+   	<li><a href="?do=src.history" ><span>Audit Entries</span></a></li>
+   	<li><a id="blk_link" href="javascript:showInnerTabs();" ><span>Bulk Load/Edit</span></a></li>
+    <div id="blk_div" style="display:none;">
+    
+    <li class="sub_menu"><a href="?do=blk.main&toggle=on" ><span style="line-height:29px; padding-left: 18px;">Bulk Load</span></a></li>
+    <li class="sub_menu"><a href="?do=blk.ed&toggle=on" ><span style="line-height:29px; padding-left: 18px;">Bulk Edit</span></a></li>
+    </div>
+    <li><a href="?do=adm.main" ><span>Admin</span></a></li>
+</ul>
+
+<div class="menuHeader">Reporting Tools</div>
+<ul class="menu menu3">
+  <li><a href="?do=cr.main" ><span>Canned Reports</span></a></li>
+  <li><a href="?do=ah.main" class="active"><span>Ad Hoc Reports</span></a></li>
+</ul>
+
+<div class="menuHeader">Global</div>
+<ul class="menu">  
+  
+  <li><a href="?do=u.up" class="vtip" title="Allows you to change your Personal Preferences such as Tool Tipcs, etc."><span>User Preferences</span></a></li>
+  <li><a href="?do=sec.logout"><span>Logout</span></a></li>
+</ul>
+
+
+
+<script type="text/javascript">
+$(function(){
+	var vToggle = 0;
+	//$("#custlinks").hide();
+	$("#custExpand").click(function(event) {	
+        if( vToggle == 0)
+		{
+			$("#custlinks").show();
+			vToggle = 1;
+		}
+		else
+		{
+			$("#custlinks").hide();
+			vToggle = 0;
+		}
+		return false;
+		//event.preventDefault();
+    });
+		$(".menu li").corner("5px"); // Round the corners of the nav menu items. uses jQuery corner plugin	
+		
+	});
+	
+	function showInnerTabs()
+	{
+		dsp = $("#blk_div").css("display");
+		
+		if(dsp == 'block')
+			$("#blk_div").css("display","none");
+		else
+			$("#blk_div").css("display","block");
+	}
+</script>
+		
+		    </td>
+
+<!------------------------------ maim code starts here ---------------------------------------->
+
+            <td valign="top" style="width:100%; padding-left:5px;">
+			
+<div style="display:block;">
+	<ul class="adminMenu">
+    	
+        <li>
+            <a href="{{ url_for('adhoc.uPickit') }}" class="active"><span>uPickit</span></a>
+        </li>
+        
+		
+        <li>
+            <a href="{{ url_for('adhoc.DoD') }}" class=><span>DoD Reporting</span></a>
+        </li>
+        
+        <li>
+            <a href="{{ url_for('adhoc.myrepo') }}" class=""><span>My Reports</span></a>
+        </li>
+        
+    </ul>
+</div>
+
+<br />
+
+
+<script type="text/javascript" src="http://cmsportal.it.att.com/assets/js/softci.js"></script>
+
+<style type="text/css">
+	.charcounter {
+		text-align:left;
+		font-style:italic;
+	}
+</style>
+
+
+
+<div class="page_title blue_title">uPickit</div>
+<br />
+
+	
+
+	<form id="cmdb_search_form" name="cmdb_search_form" action="index.cfm?do=ah.dspSearchResults5" method="post" onSubmit="return chk_type();">
+	<input name="secTokensID" type="hidden" value="b15Ka3mN3w==" />
+	
+	
+	<table class="table_sorter" style="width:100%; ">
+    	<thead>
+            <tr>
+            	<th style="text-align:right; vertical-align:top; ">Type:</th>
+            	<th style="text-align:left; ">
+                	
+					<select name="CI_Type" id="CI_Type" onChange="preLoad_type(this.value); $('#searching').dialog('open');">
+                        <option value="-1">--- Choose Type ---</option>
+                        
+                        
+                            <optgroup label="Application Management">
+                            	<option value="all_10">All Types for Application Management</option>
+                                
+                                    	<option value="44">Application</option>
+                                    
+                                    	<option value="45">Application Instance</option>
+                                    
+                            </optgroup>
+                        
+                            <optgroup label="Business Service Management">
+                            	<option value="all_40">All Types for Business Service Management</option>
+                                
+                                    	<option value="75">Application Availability Instance</option>
+                                    
+                            </optgroup>
+                        
+                            <optgroup label="Computing Infrastructure Management">
+                            	<option value="all_9">All Types for Computing Infrastructure Management</option>
+                                
+                                    	<option value="29">Chassis</option>
+                                    
+                                    	<option value="70">Cluster (VMWare)</option>
+                                    
+                                    	<option value="31">Coupling Facility (Mainframe)</option>
+                                    
+                                    	<option value="87">Director (Mainframe)</option>
+                                    
+                                    	<option value="74">LAN EndPoint</option>
+                                    
+                                    	<option value="83">LPAR (Mainframe)</option>
+                                    
+                                    	<option value="34">LPAR (Midrange)</option>
+                                    
+                                    	<option value="84">LPARZ/VM (Mainframe)</option>
+                                    
+                                    	<option value="36">Operating System</option>
+                                    
+                                    	<option value="88">Optical Library (Mainframe)</option>
+                                    
+                                    	<option value="89">Other (Mainframe)</option>
+                                    
+                                    	<option value="86">SAN Director (Mainframe)</option>
+                                    
+                                    	<option value="38">Server (Mainframe)</option>
+                                    
+                                    	<option value="39">Server (Midrange)</option>
+                                    
+                                    	<option value="40">Server (Wintel)</option>
+                                    
+                                    	<option value="90">Storage (Mainframe)</option>
+                                    
+                                    	<option value="85">Tape Library (Mainframe)</option>
+                                    
+                                    	<option value="91">Timer (Mainframe)</option>
+                                    
+                                    	<option value="41">VMWare Instance</option>
+                                    
+                                    	<option value="92">Virtual Library System (Mainframe)</option>
+                                    
+                                    	<option value="73">Workload (vTier)</option>
+                                    
+                            </optgroup>
+                        
+                            <optgroup label="Database Management">
+                            	<option value="all_39">All Types for Database Management</option>
+                                
+                                    	<option value="71">Database</option>
+                                    
+                                    	<option value="72">Database Instance</option>
+                                    
+                            </optgroup>
+                        
+                            <optgroup label="Facility Management">
+                            	<option value="all_42">All Types for Facility Management</option>
+                                
+                                    	<option value="80">Location</option>
+                                    
+                            </optgroup>
+                        
+                            <optgroup label="Human Resource Management">
+                            	<option value="all_6">All Types for Human Resource Management</option>
+                                
+                                    	<option value="79">Organization</option>
+                                    
+                                    	<option value="18">Person</option>
+                                    
+                                    	<option value="19">Role</option>
+                                    
+                            </optgroup>
+                        
+                            <optgroup label="IP Management">
+                            	<option value="all_8">All Types for IP Management</option>
+                                
+                                    	<option value="28">IP Endpoint</option>
+                                    
+                            </optgroup>
+                        
+                            <optgroup label="Network Management">
+                            	<option value="all_4">All Types for Network Management</option>
+                                
+                                    	<option value="66">Circuit</option>
+                                    
+                                    	<option value="67">Datakit</option>
+                                    
+                                    	<option value="68">Hub</option>
+                                    
+                                    	<option value="69">Layer 3 Switch</option>
+                                    
+                                    	<option value="10">Load Balancer</option>
+                                    
+                                    	<option value="11">Network Security Device</option>
+                                    
+                                    	<option value="76">Not Dedicated (Network)</option>
+                                    
+                                    	<option value="77">Other (Network)</option>
+                                    
+                                    	<option value="12">Router</option>
+                                    
+                                    	<option value="13">Switch</option>
+                                    
+                                    	<option value="78">Unknown (Network)</option>
+                                    
+                                    	<option value="14">WAN Accelerators</option>
+                                    
+                                    	<option value="15">Wireless Access Points</option>
+                                    
+                            </optgroup>
+                        
+                            <optgroup label="Software Management">
+                            	<option value="all_1">All Types for Software Management</option>
+                                
+                                    	<option value="61">Mainframe Subsystem</option>
+                                    
+                                    	<option value="81">Software Server</option>
+                                    
+                                    	<option value="63">System Software</option>
+                                    
+                            </optgroup>
+                        
+                            <optgroup label="Storage Management">
+                            	<option value="all_11">All Types for Storage Management</option>
+                                
+                                    	<option value="47">SAN Director</option>
+                                    
+                                    	<option value="82">Storage Appliance</option>
+                                    
+                                    	<option value="51">Storage Frame</option>
+                                    
+                                    	<option value="52">Tape Library</option>
+                                    
+                            </optgroup>
+                        
+                    </select> <a href="javascript:void('');" onClick="javascript: $('#searching').dialog('open');clear_this('type_chosen_div');">clear</a>
+                    <input id="schedChk" name="schedChk"  value="1" type="checkbox" onClick="preLoad_type('65'); $('#searching').dialog('open');"> Include Schedules?<div id="type_chosen_div"></div>
+                </th>
+            </tr>
+        	<tr id="tr_name">
+            	<th style="text-align:right; vertical-align:top; ">Name:</th>
+            	<th style="text-align:left; ">
+                	<input type="text" name="CI_Name" id="CI_Name" onKeyUp="load_ciName(this.value);" title="Type in part of or an entire Name" class="vtip" value="" />
+                </th>
+            </tr>
+            <tr>
+            	<th style="text-align:right; vertical-align:top; ">Asset Life Cycle:</th>
+            	<th style="text-align:left; ">
+                	<select name="Asset_Type" id="Asset_Type" onChange="javascript: load_Asset(this.value);$('#searching').dialog('open');">
+                        <option value="-1">--- Choose Asset Type ---</option>
+                        <optgroup label="Asset Life Cycle Status">
+                            <option value="2,3,4,1">All</option>
+                            
+                                <option value="2">Being Assembled</option>
+                            
+                                <option value="3">Deployed</option>
+                            
+                                <option value="4">End of Life</option>
+                            
+                                <option value="1">Received</option>
+                            
+                        </optgroup>
+                    </select> <a href="javascript:void('');" onClick="javascript: clear_this('asset_type_chosen_div');$('#searching').dialog('open');">clear</a>
+                    <div id="asset_type_chosen_div"></div>
+                </th>
+            </tr>
+        	<tr>
+            	<th  style="text-align:right; vertical-align:top; ">Mark as Deleted</th>
+            	<th style="text-align:left; ">
+                	<select name="MARKASDELETED" id="MARKASDELETED" title="Choose All, Yes, or No for Mark As Deleted">
+                        <option value="All">All</option>
+                    	<option value="Yes" >Yes</option>
+                        <option value="No" selected>No</option>
+                    </select>
+                </th>
+            </tr>
+            <tr>
+            	<th style="text-align:right; vertical-align:top; ">Environment Category:</th>
+            	<th style="text-align:left; ">
+                	<select name="Env_Cat" id="Env_Cat" onChange="javascript: load_Env(this.value);$('#searching').dialog('open');">
+                        <option value="-1">--- Choose Environment Category Type ---</option>
+                        <optgroup label="Environment Category">
+                            <option value="20,19,12,22,21,16,11,15,10,24,18,14,23,17,13">All</option>
+                                
+                                    <option value="20">Available Off Network</option>
+                                
+                                    <option value="19">Available On Network</option>
+                                
+                                    <option value="12">Back-Up</option>
+                                
+                                    <option value="22">Decomm in Process</option>
+                                
+                                    <option value="21">Decommission</option>
+                                
+                                    <option value="16">Development</option>
+                                
+                                    <option value="11">Disaster Recovery</option>
+                                
+                                    <option value="15">Install</option>
+                                
+                                    <option value="10">Maintenance</option>
+                                
+                                    <option value="24">Not Managed</option>
+                                
+                                    <option value="18">Production</option>
+                                
+                                    <option value="14">Sandbox</option>
+                                
+                                    <option value="23">Stage</option>
+                                
+                                    <option value="17">Test</option>
+                                
+                                    <option value="13">Vtil</option>
+                                                           	
+                    </select> <a href="javascript:void('');" onClick="javascript: clear_this('env_cat_chosen_div');$('#searching').dialog('open');">clear</a>
+                    <div id="env_cat_chosen_div"></div>
+                </th>
+            </tr>
+        	<tr style="text-align:right; ">
+            	<th  style="text-align:right; vertical-align:top; ">Virtual</th>
+            	<th style="text-align:left; ">
+                	<select id="VIRTUAL" name="virtual" title="Choose All, Yes, or No for Virtual">
+                    	<option value="All">All</option>
+                    	<option value="Yes" >Yes</option>
+                        <option value="No" >No</option>
+                    </select>
+                </th>
+            </tr>
+            <tr>
+            	<th style="text-align:right; vertical-align:top; ">Hardware Manufacturer:</th>
+            	<th style="text-align:left; ">
+				
+                	<select name="Hard_Manufacturer" id="Hard_Manufacturer" onChange="javascript: load_hardware(this.value);">
+                        <option value="-1">--- Choose Type First ---</option>
+                        
+                    </select> <a href="javascript:void('');" onClick="javascript: clear_this('hardware_chosen_div');">clear</a>
+                    <div id="hardware_chosen_count"></div>
+					<div id="hardware_chosen_div"></div>
+                </th>
+            </tr>            
+        	<tr>
+            	<th  style="text-align:right; vertical-align:top; ">Model:</th>
+            	<th style="text-align:left; ">
+                	<input type="text" name="Model" id="Model" title="Type in part of or an entire Model" class="vtip" value="" maxlength="255" />
+                </th>
+            </tr>
+        	<tr>
+            	<th style="text-align:right; vertical-align:top; ">Serial Number:</th>
+            	<th style="text-align:left; ">
+                	<input type="text" name="CMDB_SerialNumber" id="CMDB_SerialNumber" title="Type in part of or an entire Serial Number" class="vtip" value="" maxlength="255" />
+                </th>
+            </tr>
+        	<tr>
+            	<th style="text-align:right; vertical-align:top; ">Asset ID:</th>
+            	<th style="text-align:left; ">
+                	<input type="text" name="AssetID" id="AssetID" title="Type in part of or an entire Asset ID" class="vtip" value="" maxlength="255" />
+                </th>
+            </tr>
+        	<tr>
+            	<th  style="text-align:right; vertical-align:top; ">Asset Tag:</th>
+            	<th style="text-align:left; ">
+                	<input type="text" name="AssetTag" id="AssetTag" title="Type in part of or an entire Asset Tag" class="vtip" value="" maxlength="255" />
+                </th>
+            </tr>
+            <tr>
+            	<th  style="text-align:right; vertical-align:top; ">CLLI:</th>
+            	<th style="text-align:left; ">
+                	<input type="text" name="CLLI" id="CLLI" title="Type in part of or an entire CLLI Code" class="vtip" value="" maxlength="255" />
+                </th>
+            </tr>
+        	<tr>
+            	<th  style="text-align:right; vertical-align:top; ">Address:</th>
+            	<th style="text-align:left; ">
+                	<input type="text" name="loc_Address" id="loc_Address" title="Type in part of or an entire Address" class="vtip" onKeyUp="get_loc_data(this)" style="width:200px; " />
+                    <div id="location_search_add"></div>
+                    
+					<div id="location_search" style="min-height:0px; max-height:140px; overflow-y:scroll; overflow-x:hidden;"></div>
+					
+                </th>
+            </tr>
+            <tr>
+            	<th  style="text-align:right; vertical-align:top; ">Dataset ID:</th>
+            	<th style="text-align:left; ">
+                	<select name="datasetID" id="datasetID" onChange="javascript: load_Dataset(this.value);$('#searching').dialog('open');">
+                    	<option value="-1">--- Choose Dataset ---</option>
+                        <option value="145,147,146,151,150,149,153,152,148,154">ALL DATASETS</option>
+                    	
+                            <option value="145">ATT.IEDS</option>
+                        
+                            <option value="147">ATT.MAINFRAME</option>
+                        
+                            <option value="146">ATT.MOTS</option>
+                        
+                            <option value="151">ATT.NMT</option>
+                        
+                            <option value="150">ATT.SOFTCI</option>
+                        
+                            <option value="149">ATT.TICKETING</option>
+                        
+                            <option value="153">ATT.WEBPHONE</option>
+                        
+                            <option value="152">ATT.WITTDB</option>
+                        
+                            <option value="148">BMC.ASSET</option>
+                        
+                            <option value="154">BMC.ASSET.SANDBOX</option>
+                        
+                    </select> <a href="javascript:void('');" onClick="javascript: clear_this('dataset_chosen_div');$('#searching').dialog('open');">clear</a>
+                    <div id="dataset_chosen_div">
+                    
+                        1 Dataset chosen
+                        <div id="asset_148" style="padding-bottom:0px; ">BMC.ASSET <a onClick="remove_dataset(148); $('#searching').dialog('open');" href="javascript:void(''); ">remove</a></div>
+                    
+                    </div>
+					
+                </th>
+            </tr>
+            <tr>
+            	<th style="text-align:right; vertical-align:top; ">Search People:</th>
+                <th style="text-align:left; ">
+                	<input type="text" name="text_field" id="text_field" class="vtip" title="Type in part of an attuid, last name, or first name." onKeyUp="get_contacts_data(this);" style="width:200px; "  /> <input  type="checkbox" name="suborChk" id="suborChk" value="1" onClick="chk_subordinate();" /> Subordinate Search
+                    <div id="people_search_add"></div>
+					
+				<div id="people_search" style="min-height:0px; max-height:140px; overflow-y:scroll; overflow-x:hidden;"></div>
+					
+                </th>
+            </tr>
+        	<tr>
+            	<th colspan="2">
+                	<a href="javascript:void('');" style="text-decoration:none; " onClick="javascript:dspCriteriaHelp();"><img style="border:none; " src="static/images/help.gif" /></a>Additional Criteria:
+                </th>
+            </tr>
+        	<tr>
+            	<th style="text-align:left; " colspan="2">
+                	<textarea style="width:95%; " name="add_criteria" id="add_criteria">AND </textarea>
+                    <div id="add_criteria_disable" style="display:none; "><font color="red">The additional criteria box is disabled after 2 or more Types are chosen</font></div>
+                </th>
+            </tr>
+        </thead>
+    </table>
+    
+    <br />
+    
+    <div id="cols_to_display"></div>
+    
+    <table class="table_sorter" width="100%">
+        <thead>
+            <tr class="vtip" title="Display Format">
+                <th colspan="2">Display Format: </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr align="right">
+                <td style="text-align:left;width:525px;" >
+                	<input type="radio" name="reportOutput" id="reportOutput_HTML" value="reportOutput_HTML" onClick=                    "showUPChk();" checked >HTML
+                </td>
+                
+                <td style="text-align:left;">
+                	Include Mark as Deleted RelationShips No
+                	
+                    <input type="radio" name="relationship_HTML" id="relationship_HTML_No" value="No"
+                    	 checked= "true" >
+                    &nbsp&nbsp&nbsp;Yes
+                  	<input type="radio" name="relationship_HTML" id="relationship_HTML_Yes" value="Yes"
+                    	>
+                    
+                 </td>
+            </tr>
+            <tr align="right">
+                <td style="text-align:left;width:525px;">
+                 	<input type="radio" name="reportOutput" id="reportOutput_Excel" value="reportOutput_Excel" onClick=                    "showUPChk();" />Excel
+                    <label id="US_lbl" style="display:none;">
+                    	<input id="US_chk" type="checkbox" onClick="showRelation();"/>
+                        Include Upstream and Downstream records? <font color="#FF0000">(WARNING! May run slower)
+                    </label>
+                </td>
+                
+                <td style="text-align:left; ">
+                	<label id="rel_lbl_No" style="display:none; ">Include Mark as Deleted RelationShips No</label>
+                		<input type="radio" name="relationship_Excel" id="relationship_Excel_No" value="No" checked="true"                               style=	"display:none;">
+               		<label id="rel_lbl_yes" style="display:none; ">&nbsp&nbsp&nbsp;Yes </label>
+						<input type="radio" name="relationship_Excel" id="relationship_Excel_Yes" value="Yes" style=
+                        		"display:none;">
+               </td>
+            </tr>
+        </tbody>
+    </table><span style='font-style:italic; text-align:left; '></span>
+    
+    <input type="hidden" name="selectQueryString" id="selectQueryString" value="" />
+    <input type="hidden" name="selectQueryStringDisp" id="selectQueryStringDisp" value="" />
+    <input type="hidden" name="selectQueryStringId" id="selectQueryStringId" value="" />
+    <input type="hidden" name="selectCount" id="selectCount" value="1" />
+    <input type="hidden" name="fromQueryString" id="fromQueryString" value="" />
+    <input type="hidden" name="whereQueryString" id="whereQueryString" value="" />
+    <input type="hidden" name="fromQueryAbbrev" id="fromQueryAbbrev" value="" />
+    <input type="hidden" name="fromQueryPrefix" id="fromQueryPrefix" value="" />
+    <input type="hidden" name="typeChosen" id="typeChosen" value="" />
+    <input type="hidden" name="assetTypeChosen" id="assetTypeChosen" value="" />
+    <input type="hidden" name="assetTypeChosenName" id="assetTypeChosenName" value="" />
+    <input type="hidden" name="envCatChosen" id="envCatChosen" value="" />
+    <input type="hidden" name="datasetChosen" id="datasetChosen" value="148" />
+    <input type="hidden" name="CINameChosen" id="CINameChosen" value="" />
+    <input type="hidden" name="peopleChosen" id="peopleChosen" value="" />
+    <input type="hidden" name="locationChosen" id="locationChosen" value="" />
+    <input type="hidden" name="hardwareChosen" id="hardwareChosen" value="" />
+    <input type="hidden" name="edit_SavedSearch" id="edit_SavedSearch" value="0" />
+    <input type="hidden" name="include_total_chk" id="include_total_chk" value="0" />
+    <input type="hidden" name="savedColsToDisplay" id="savedColsToDisplay" value="" />   
+    <br />
+    
+    <input class="fg-button ui-state-default ui-corner-all" type="submit" value="Search" style="width:100%; " name="search_CMDB" />
+</form>
+
+<div id="addCriteriaHelp" name="addCriteriaHelp" style="display:none; ">
+	
+
+
+<style>
+a.helpLink:link {color:#FF7100;}
+a.helpLink:visited {color:#FF7100;}
+a.helpLink:hover {color:#CCCCCC;} 
+a.helpLink:active {color:#CCCCCC;}  
+</style>
+
+   
+	<BLOCKQUOTE>
+	
+	<strong>General Notes:</strong>
+        <UL>
+            <LI>Text entered will be added to the where clause of the query. Most standard Oracle syntax will work.</LI>
+            <LI>The first word of your criteria must be "and".
+            <LI>You can add specific criteria for any table.column shown in the "Columns to include in the Report" section.</LI>
+            
+     </BLOCKQUOTE> 
+	 
+	 <p>
+	 
+	<BLOCKQUOTE>
+	<strong>Syntax Help/Examples</strong>
+		<UL>
+			<LI>Literals should be enclosed in single quotes (') Example:<BR>
+				<i>and</i> BMCLPAR.LPAR_MANUFACTURERNAME = 'IBM'</LI>
+			
+			<LI>To filter on only records with (or without) values, use "is null" or "is not null". Examples:<BR>
+				<i>and</i> BMCROUTE.ROUTER_MODEL <i>is not null</i><br />
+				<i>and</i> BMCROUTE.ROUTER_SERIALNUMBER <i>is null</i></LI>
+			
+			<LI>Oracle's wildcard character is (%), it must be used with the "like/not like" operator. Examples:<br>
+				<i>and BMCSERVMID.SERVMID_CLLI like '%ca02'</i> will match all records where the CLLI ends in "ca02"<br />
+				<i>and BMCSERVMID.SERVMID_HOSTNAME not like '%cipg2%'</i> will match all records where the host name does not contain "cipg2"<br />
+				<i>and BMCSERVMID.SERVMID_HOSTNAME like 'cipg%'</i> will match all records where the host name starts with "cipg"</LI>
+			
+			<LI>To filter on lists of values, use the "in/not in" operator. The list is contained in parentheses, delimited by commas. Example:<br>
+				<i>and BMCLPAR.LPAR_DISCOVERYSOURCE in ('IEDS','MANUAL')</i></LI>
+			
+			<LI>Multiple criteria can be used, connect each with the "and" or "or" operator and parentheses if required. Examples:<br>
+				<i>and BMCROUTE.ROUTER_ZTMPLOCATION = 'SFLDMIBB' and BMCROUTE.ROUTER_ASSETLIFECYCLESTATUS = 'Production'<br />
+				and (BMCSERVWIN.SERVWIN_ALTERNATEASSETID5 = 'casndg1pim01618' or BMCSERVWIN.SERVWIN_HOSTNAME = 'casndg1smsip273')</i></LI>
+				
+		  
+		  
+		  <LI>See <a href="http://download.oracle.com/docs/cd/B19306_01/server.102/b14200/conditions001.htm" target="_blank" class="helpLink">Oracle Conditions</a> for more help.  Full Oracle documentation is available at <a HREF="http://www.oracle.com/pls/db102/homepage" TARGET="_BLANK" class="helpLink">Oracle 10g Docs</a></LI>
+	</BLOCKQUOTE>
+	 
+	<p>	
+	 
+	<BLOCKQUOTE>
+		<strong>Current Valid Table Prefixes:</strong>
+		<UL>
+			
+					<LI>Application = <b>BMCAPL</b> (example - BMCAPL.APL_XXX = 'TEST')</LI>
+				
+					<LI>Application Availability Instance = <b>BMCAPAVIN</b> (example - BMCAPAVIN.APAVIN_XXX = 'TEST')</LI>
+				
+					<LI>Application Instance = <b>BMCAPPINST</b> (example - BMCAPPINST.APPINST_XXX = 'TEST')</LI>
+				
+					<LI>Chassis = <b>BMCCHAS</b> (example - BMCCHAS.CHAS_XXX = 'TEST')</LI>
+				
+					<LI>Circuit = <b>BMCCIRC</b> (example - BMCCIRC.CIRC_XXX = 'TEST')</LI>
+				
+					<LI>Cluster (VMWare) = <b>BMCCVMW</b> (example - BMCCVMW.CVMW_XXX = 'TEST')</LI>
+				
+					<LI>Coupling Facility (Mainframe) = <b>BMCCOUPL</b> (example - BMCCOUPL.COUPL_XXX = 'TEST')</LI>
+				
+					<LI>Database = <b>BMCDBASE</b> (example - BMCDBASE.DBASE_XXX = 'TEST')</LI>
+				
+					<LI>Database Instance = <b>BMCDBINST</b> (example - BMCDBINST.DBINST_XXX = 'TEST')</LI>
+				
+					<LI>Datakit = <b>BMCDATA</b> (example - BMCDATA.DATAK_XXX = 'TEST')</LI>
+				
+					<LI>Director (Mainframe) = <b>BMCDIRMF</b> (example - BMCDIRMF.DIRMF_XXX = 'TEST')</LI>
+				
+					<LI>Hub = <b>BMCHUB</b> (example - BMCHUB.HUB_XXX = 'TEST')</LI>
+				
+					<LI>IP Endpoint = <b>BMCIPEND</b> (example - BMCIPEND.IPEND_XXX = 'TEST')</LI>
+				
+					<LI>LAN EndPoint = <b>BMCLANEP</b> (example - BMCLANEP.LANEP_XXX = 'TEST')</LI>
+				
+					<LI>LPAR (Mainframe) = <b>BMCLPARMAIN</b> (example - BMCLPARMAIN.LPARM_XXX = 'TEST')</LI>
+				
+					<LI>LPAR (Midrange) = <b>BMCLPARMID</b> (example - BMCLPARMID.LPAR_XXX = 'TEST')</LI>
+				
+					<LI>LPARZ/VM (Mainframe) = <b>BMCLPARZ</b> (example - BMCLPARZ.LPARZ_XXX = 'TEST')</LI>
+				
+					<LI>Layer 3 Switch = <b>BMCLAY3</b> (example - BMCLAY3.LAY3_XXX = 'TEST')</LI>
+				
+					<LI>Load Balancer = <b>BMCLOAD</b> (example - BMCLOAD.LOAD_XXX = 'TEST')</LI>
+				
+					<LI>Location = <b>BMCLOC</b> (example - BMCLOC.LOC_XXX = 'TEST')</LI>
+				
+					<LI>Mainframe Subsystem = <b>BMCMAINFR</b> (example - BMCMAINFR.MAINSUB_XXX = 'TEST')</LI>
+				
+					<LI>Network Security Device = <b>BMCNSD</b> (example - BMCNSD.NSD_XXX = 'TEST')</LI>
+				
+					<LI>Not Dedicated (Network) = <b>BMCNOTDED</b> (example - BMCNOTDED.NOTDED_XXX = 'TEST')</LI>
+				
+					<LI>Operating System = <b>BMCOS</b> (example - BMCOS.OS_XXX = 'TEST')</LI>
+				
+					<LI>Optical Library (Mainframe) = <b>BMCOPTLIBRARY</b> (example - BMCOPTLIBRARY.OPTLIB_XXX = 'TEST')</LI>
+				
+					<LI>Organization = <b>BMCORG</b> (example - BMCORG.ORG_XXX = 'TEST')</LI>
+				
+					<LI>Other (Mainframe) = <b>BMCOTHERMF</b> (example - BMCOTHERMF.OTHMF_XXX = 'TEST')</LI>
+				
+					<LI>Other (Network) = <b>BMCOTRNWRK</b> (example - BMCOTRNWRK.OTRNWRK_XXX = 'TEST')</LI>
+				
+					<LI>Person = <b>BMCPER</b> (example - BMCPER.PERSON_XXX = 'TEST')</LI>
+				
+					<LI>Role = <b>BMCROLE</b> (example - BMCROLE.ROLE_XXX = 'TEST')</LI>
+				
+					<LI>Router = <b>BMCROUTE</b> (example - BMCROUTE.ROUTER_XXX = 'TEST')</LI>
+				
+					<LI>SAN Director = <b>BMCSAN</b> (example - BMCSAN.SANDIR_XXX = 'TEST')</LI>
+				
+					<LI>SAN Director (Mainframe) = <b>BMCSANDIR</b> (example - BMCSANDIR.SANDIRM_XXX = 'TEST')</LI>
+				
+					<LI>Server (Mainframe) = <b>BMCSERVMF</b> (example - BMCSERVMF.SERVMF_XXX = 'TEST')</LI>
+				
+					<LI>Server (Midrange) = <b>BMCSERVMID</b> (example - BMCSERVMID.SERVMID_XXX = 'TEST')</LI>
+				
+					<LI>Server (Wintel) = <b>BMCSERVWIN</b> (example - BMCSERVWIN.SERVWIN_XXX = 'TEST')</LI>
+				
+					<LI>Software Server = <b>BMCSOFTSER</b> (example - BMCSOFTSER.SOFTSER_XXX = 'TEST')</LI>
+				
+					<LI>Storage (Mainframe) = <b>BMCSTORAGEMF</b> (example - BMCSTORAGEMF.STORGMF_XXX = 'TEST')</LI>
+				
+					<LI>Storage Appliance = <b>BMCSTRAPP</b> (example - BMCSTRAPP.STORAPP_XXX = 'TEST')</LI>
+				
+					<LI>Storage Frame = <b>BMCSTOR</b> (example - BMCSTOR.STORF_XXX = 'TEST')</LI>
+				
+					<LI>Switch = <b>BMCSWITCH</b> (example - BMCSWITCH.SWITCH_XXX = 'TEST')</LI>
+				
+					<LI>System Software = <b>BMCSOFTW</b> (example - BMCSOFTW.SOFT_XXX = 'TEST')</LI>
+				
+					<LI>Tape Library = <b>BMCTAPEL</b> (example - BMCTAPEL.TAPEL_XXX = 'TEST')</LI>
+				
+					<LI>Tape Library (Mainframe) = <b>BMCTAPLIB</b> (example - BMCTAPLIB.TAPLIB_XXX = 'TEST')</LI>
+				
+					<LI>Timer (Mainframe) = <b>BMCTIMERMF</b> (example - BMCTIMERMF.TIMERMF_XXX = 'TEST')</LI>
+				
+					<LI>Unknown (Network) = <b>BMCUKNNWRK</b> (example - BMCUKNNWRK.UNKNWRK_XXX = 'TEST')</LI>
+				
+					<LI>VMWare Instance = <b>BMCVMWAR</b> (example - BMCVMWAR.VMWARE_XXX = 'TEST')</LI>
+				
+					<LI>Virtual Library System (Mainframe) = <b>BMCVLLIBRARYMF</b> (example - BMCVLLIBRARYMF.VIRLIBS_XXX = 'TEST')</LI>
+				
+					<LI>WAN Accelerators = <b>BMCWAN</b> (example - BMCWAN.WAN_XXX = 'TEST')</LI>
+				
+					<LI>Wireless Access Points = <b>BMCWAP</b> (example - BMCWAP.WAP_XXX = 'TEST')</LI>
+				
+					<LI>Workload (vTier) = <b>BMCWLVT</b> (example - BMCWLVT.WLVT_XXX = 'TEST')</LI>
+				
+		</UL>
+	</BLOCKQUOTE>
+	
+
+</div>
+
+<div id="dspIncludeTotals" name="dspIncludeTotals" style="display:none; ">
+	<blockquote>
+    <UL>
+        <LI>Checking the "Include Totals" box will add a column to your report with the Total Count of records which meet the selected criteria.</LI>
+        
+		
+    </UL>
+</BLOCKQUOTE>
+</div>
+
+<div id="searching" name="searching" style="display:none; ">
+    <img src="static/images/working.gif" />&nbsp;<span style="font-weight: bold; font-size:24px;" id="SearchText">Processing ... </span>
+</div>
+
+
+<script type="text/javascript">
+	
+	//Global variables
+	
+	var contacts_timeout;
+	var loc_contacts_timeout;
+	var location_timeout;
+	var count = 0;
+	var orderByCount = 2;
+	var contactCount = 0;
+	var locationCount = 0;
+	var ajaxPeople;
+	var ajaxLocation;
+	var count_typeChosen = 0;
+	var count_assetTypeChosen = 0;
+	var count_envCatChosen = 0;
+	var count_hardwareChosen = 0;
+	var count_datasetChosen = 1;
+	var count_peopleChosen = 0;	
+	var count_locationChosen = 0;	
+	
+	//This creates the line for the select statement in the query
+	
+	function remove_selected(queryPrefix, queryAbbrev, queryVwName)
+		{
+			var fromQuery;
+			var fromQueryUpdate;
+			var fromQueryAbbrev;
+			var fromQueryAbbrevUpdate;
+			var fromQueryPrefix;
+			var fromQueryPrefixUpdate;
+			var fromFind;
+			var selectQueryNames;
+			var selectFind;
+			var selectFindArray;
+			var selectFindArrayLen;
+			var findSelectName;
+			var selectQueryIds;
+			var selectQueryIdsArray;
+			var selectQueryDisp;
+			var selectQueryDispArray;
+			
+			
+			$('#US_chk').prop( "disabled", false );
+			
+			fromQuery = $('#fromQueryString').val();
+			fromQueryAbbrev = $('#fromQueryAbbrev').val();
+			fromQueryPrefix = $('#fromQueryPrefix').val();
+			selectQueryNames = $('#selectQueryString').val();
+			selectQueryIds = $('#selectQueryStringId').val();
+			selectQueryDisp = $('#selectQueryStringDisp').val();
+			
+			if(fromQueryPrefix != '')
+				{	
+			
+				//var selectQuery = $('#selectQueryString').val();
+				selectFind = fromQuery.search(queryAbbrev);	
+				
+				if(selectFind != -1)
+					{			
+						selectFindArray = selectQueryNames.split(',');
+						selectFindArrayLen = selectFindArray.length;
+						
+						selectQueryIdsArray = selectQueryIds.split(',');
+						selectQueryDispArray = selectQueryDisp.split(',');
+					
+						for(i=0; i<selectFindArrayLen; i++)	
+							{
+								findSelectName = selectFindArray[i].search(queryAbbrev);
+								
+								if (findSelectName != -1)
+									{
+										selectQueryNames = selectQueryNames.replace(',' + selectFindArray[i], '');
+										selectQueryNames = selectQueryNames.replace(selectFindArray[i] + ',', '');
+										selectQueryNames = selectQueryNames.replace(selectFindArray[i], '');
+										
+										selectQueryIds = selectQueryIds.replace(',' + selectQueryIdsArray[i], '');
+										selectQueryIds = selectQueryIds.replace(selectQueryIdsArray[i] + ',', '');
+										selectQueryIds = selectQueryIds.replace(selectQueryIdsArray[i], '');
+										
+										selectQueryDisp = selectQueryDisp.replace(',' + selectQueryDispArray[i], '');
+										selectQueryDisp = selectQueryDisp.replace(selectQueryDispArray[i] + ',', '');
+										selectQueryDisp = selectQueryDisp.replace(selectQueryDispArray[i], '');
+									}
+							}
+					}
+					
+				fromFind = fromQueryAbbrev.search(queryAbbrev);
+				fromClassFind = fromQuery.search(queryVwName);
+				fromPrefixFind = fromQueryPrefix.search(queryPrefix);
+				
+				if(fromPrefixFind == 0)
+					{
+						var thisFromQueryAbbrevSelect = queryAbbrev;
+						var thisFromQueryAbbrevSelectLength = thisFromQueryAbbrevSelect.length;
+						var startingFromQueryAbbrevPos = fromQueryAbbrev.substring(fromFind, thisFromQueryAbbrevSelectLength + 1);
+						var startingfromQueryPosFind = startingFromQueryAbbrevPos.search(',');
+									
+						var thisFromQueryPrefixSelect = queryPrefix;
+						var thisFromQueryPrefixSelectLength = thisFromQueryPrefixSelect.length;
+						var startingFromQueryPrefixPos = fromQueryPrefix.substring(fromPrefixFind, thisFromQueryPrefixSelectLength + 1);
+						var startingFromQueryPrefixFind = startingFromQueryPrefixPos.search(',');
+						
+						var thisFromQueryClassSelect = queryVwName + ' ' + queryAbbrev;
+						var thisFromQueryClassSelectLength = thisFromQueryClassSelect.length;
+						var startingFromQueryClassPos = fromQuery.substring(fromClassFind, thisFromQueryClassSelectLength + 1);
+						var startingFromQueryClassFind = startingFromQueryClassPos.search(',');
+						
+						if(startingFromQueryPrefixFind == -1)
+							{
+								var fromQueryPrefixNoSpace = queryPrefix;
+								fromQueryPrefixUpdate = fromQueryPrefix.replace(fromQueryPrefixNoSpace, '');
+							}else{
+								var fromQuerPrefixTrailComma = queryPrefix + ',';
+								fromQueryPrefixUpdate = fromQueryPrefix.replace(fromQuerPrefixTrailComma, '');
+							}
+							
+						if(startingfromQueryPosFind == -1)
+							{
+								var fromQueryAbbrevNoSpace = queryAbbrev;
+								fromQueryAbbrevUpdate = fromQueryAbbrev.replace(fromQueryAbbrevNoSpace, '');
+							}else{
+								var fromQuerAbbrevTrailComma = queryAbbrev + ',';
+								fromQueryAbbrevUpdate = fromQueryAbbrev.replace(fromQuerAbbrevTrailComma, '');
+							}
+							
+						if(startingFromQueryClassFind == -1)
+							{
+								var fromQueryClassNoSpace = queryVwName + ' ' + queryAbbrev;
+								fromQueryUpdate = fromQuery.replace(fromQueryClassNoSpace, '');
+							}else{
+								var fromQuerClassTrailComma = queryVwName + ' ' + queryAbbrev + ',';
+								fromQueryUpdate = fromQuery.replace(fromQuerClassTrailComma, '');
+							}
+					}
+				
+				if(fromPrefixFind > 0)
+					{
+						var fromQueryAbbrevPrevComma = ','+queryAbbrev;
+						fromQueryAbbrevUpdate = fromQueryAbbrev.replace(fromQueryAbbrevPrevComma, '');
+						
+						var fromQueryClassPrevComma = ','+queryVwName + ' ' + queryAbbrev;
+						fromQueryUpdate = fromQuery.replace(fromQueryClassPrevComma, '');
+						
+						var fromQueryPrefixPrevComma = ','+queryPrefix;
+						fromQueryPrefixUpdate = fromQueryPrefix.replace(fromQueryPrefixPrevComma, '');
+					}	
+				
+				var fromPrefixAfterFind = fromQueryPrefix.search(queryPrefix);
+						
+				if(fromPrefixAfterFind == -1)	
+					{	
+						fromQueryUpdate = fromQuery;
+						fromQueryAbbrevUpdate = fromQueryAbbrev;
+						fromQueryPrefixUpdate = fromQueryPrefix;
+					}
+				$('#fromQueryString').val(fromQueryUpdate);
+				$('#fromQueryAbbrev').val(fromQueryAbbrevUpdate);
+				$('#fromQueryPrefix').val(fromQueryPrefixUpdate);
+				$('#selectQueryString').val(selectQueryNames);
+			 	$('#selectQueryStringId').val(selectQueryIds);
+			 	$('#selectQueryStringDisp').val(selectQueryDisp);
+				$('#savedColsToDisplay').val(selectQueryIds);
+				
+				
+				
+			}
+		}
+
+	function createSelectQuery(colDisplay, CMDBAbbrev, colDisplayName, colDisplayId, numCols, sectNumber, colOrder, colAttrib)
+		{
+			var selectQuery;
+			var selectQueryUpdate;
+			var selectQueryDisp;
+			var selectQueryDispUpdate;
+			var selectQueryId;
+			var selectQueryIdUpdate;
+			var selectCount;
+			var selectQueryIdUpdateFind;
+			var selectQueryUpdateFind;
+			var selectQueryDispUpdateFind;
+			
+			selectQuery = $('#selectQueryString').val();
+			selectQueryDisp = $('#selectQueryStringDisp').val();
+			selectQueryId = $('#selectQueryStringId').val();
+			selectCount = $('#selectCount').val();		
+			
+			var findDuplicateQueryId = selectQueryId.search(colDisplayId);			
+			
+			if (document.getElementById('chk_' + numCols + '_' + sectNumber).checked == true)
+				{
+					colChecked = 1;
+				}else{
+					colChecked = 0;
+				}
+			
+			if (colChecked == 1)
+				{				
+					if (selectQuery == '' || selectQuery == ' ')
+						{
+							selectQueryUpdate = CMDBAbbrev + '.' + colDisplay;
+							selectQueryDispUpdate = colDisplayName;
+							selectQueryIdUpdate = colDisplayId;
+						}else{	
+							if(findDuplicateQueryId == -1)
+								{
+									selectQueryUpdate = selectQuery + ',' + CMDBAbbrev + '.' + colDisplay;
+									selectQueryDispUpdate = selectQueryDisp + ',' + colDisplayName;
+									selectQueryIdUpdate = selectQueryId + ',' + colDisplayId;
+								}else{
+									selectQueryUpdate = selectQuery;
+									selectQueryDispUpdate = selectQueryDisp;
+									selectQueryIdUpdate = selectQueryId;
+								}
+						}
+				}else{					
+					selectQueryIdUpdateFind = selectQueryId.search(colDisplayId);	
+					selectQueryUpdateFind = selectQuery.search(CMDBAbbrev + '.' + colDisplay);
+					selectQueryDispUpdateFind = selectQueryDisp.search(colDisplayName);
+					
+					if(selectQueryIdUpdateFind != -1)
+						{
+							if(selectQueryIdUpdateFind == 0)
+								{
+									var thisIdSelect = colDisplayId;
+									var thisIdSelectLength = thisIdSelect.length;
+									var startingIdPos = selectQueryId.substring(selectQueryIdUpdateFind, thisIdSelectLength + 1);
+									var startingIdPosFind = startingIdPos.search(',');
+									
+									if(startingIdPosFind == -1)
+										{
+											var colDisplayIdNoSpace = colDisplayId;
+											selectQueryIdUpdate = selectQueryId.replace(colDisplayIdNoSpace, '');
+										}else{
+											var colDisplayIdTrailComma = colDisplayId + ',';
+											selectQueryIdUpdate = selectQueryId.replace(colDisplayIdTrailComma, '');
+										}									
+								}
+								
+							if(selectQueryIdUpdateFind != 0)
+								{
+									var colDisplayIdPrevComma = ','+colDisplayId;
+									selectQueryIdUpdate = selectQueryId.replace(colDisplayIdPrevComma, '');
+								}					
+						}	
+																
+					if(selectQueryUpdateFind != -1)
+						{	
+							if(selectQueryUpdateFind == 0)
+								{
+									var thisSelect = CMDBAbbrev+'.'+ colDisplay;
+									var thisSelectLength = thisSelect.length;
+									var startingPos = selectQuery.substring(selectQueryUpdateFind, thisSelectLength + 1);
+									var startingPosFind = startingPos.search(',');
+									
+									if(startingPosFind == -1)
+										{
+											var queryWithAbbrevTrailCommaWithSpace = CMDBAbbrev+'.' + colDisplay;
+											selectQueryUpdate = selectQuery.replace(queryWithAbbrevTrailCommaWithSpace, '');
+										}else{
+											var queryWithAbbrevTrailCommaWithSpace = CMDBAbbrev+'.' + colDisplay + ',';
+											selectQueryUpdate = selectQuery.replace(queryWithAbbrevTrailCommaWithSpace, '');
+										}									
+								}
+								
+							if(selectQueryUpdateFind != 0)
+								{
+									var queryWithAbbrevPrevComma = ','+CMDBAbbrev+'.'+ colDisplay;
+									selectQueryUpdate = selectQuery.replace(queryWithAbbrevPrevComma, '');
+								}						
+						}
+						
+					if(selectQueryDispUpdateFind != -1)
+						{
+							if(selectQueryDispUpdateFind == 0)
+								{
+									var thisDispSelect = colDisplayName;
+									var thisDispSelectLength = thisDispSelect.length;
+									var startingDispPos = selectQueryDisp.substring(selectQueryDispUpdateFind, thisIdSelectLength + 1);
+									var startingDispPosFind = startingDispPos.search(',');
+									
+									if(startingDispPosFind == -1)
+										{
+											var colDisplayNameNoSpace = colDisplayName;
+											selectQueryDispUpdate = selectQueryDisp.replace(colDisplayNameNoSpace, '');
+										}else{
+											var colDisplayNameTrailComma = colDisplayName + ',';
+											selectQueryDispUpdate = selectQueryDisp.replace(colDisplayNameTrailComma, '');
+										}									
+								}
+								
+							if(selectQueryDispUpdateFind != 0)
+								{
+									var colDisplayNamePrevComma = ','+colDisplayName;
+									selectQueryDispUpdate = selectQueryDisp.replace(colDisplayNamePrevComma, '');
+								}					
+						}	
+								
+				}
+			
+			$('#selectQueryString').val(selectQueryUpdate);
+			$('#selectQueryStringDisp').val(selectQueryDispUpdate);
+			$('#selectQueryStringId').val(selectQueryIdUpdate);
+			$('#selectCount').val(Number(selectCount)+1);
+			
+			//alert(selectQueryUpdate + ' ' + selectQueryDispUpdate + ' ' + selectQueryIdUpdate + ' ' + colDisplay + );
+		}
+		
+	//This will create the FROM portion of the query by sticking the vars into a hidden var
+		
+	function createFromQuery(CMDBClass, CMDBAbbrev, VWPrefix)
+		{
+			var fromQuery;
+			var fromQueryUpdate;
+			var fromQueryAbbrev;
+			var fromQueryAbbrevUpdate;
+			var fromQueryPrefix;
+			var fromQueryPrefixUpdate;
+			var fromFind;
+			var selectFind;
+			
+			fromQuery = $('#fromQueryString').val();
+			fromQueryAbbrev = $('#fromQueryAbbrev').val();
+			fromQueryPrefix = $('#fromQueryPrefix').val();	
+			
+			var selectQuery = $('#selectQueryString').val();
+			selectFind = selectQuery.search(CMDBAbbrev);
+			
+			if (fromQuery == '')
+				{
+					fromQueryUpdate = CMDBClass + ' ' + CMDBAbbrev;
+					fromQueryAbbrevUpdate = CMDBAbbrev;
+					fromQueryPrefixUpdate = VWPrefix;
+				}else{	
+					fromFind = fromQueryAbbrev.search(CMDBAbbrev);
+					fromClassFind = fromQuery.search(CMDBClass);
+					fromPrefixFind = fromQueryPrefix.search(VWPrefix);
+					
+					if(selectFind == -1)
+						{							
+							if(fromFind == 0)
+								{									
+									var thisFromQueryAbbrevSelect = CMDBAbbrev;
+									var thisFromQueryAbbrevSelectLength = thisFromQueryAbbrevSelect.length;
+									var startingFromQueryAbbrevPos = fromQueryAbbrev.substring(fromFind, thisFromQueryAbbrevSelectLength + 1);
+									var startingfromQueryPosFind = startingFromQueryAbbrevPos.search(',');
+									
+									var thisFromQueryClassSelect = CMDBClass + ' ' + CMDBAbbrev;
+									var thisFromQueryClassSelectLength = thisFromQueryClassSelect.length;
+									var startingFromQueryClassPos = fromQuery.substring(fromClassFind, thisFromQueryClassSelectLength + 1);
+									var startingFromQueryClassFind = startingFromQueryClassPos.search(',');
+									
+									var thisFromQueryPrefixSelect = VWPrefix;
+									var thisFromQueryPrefixSelectLength = thisFromQueryPrefixSelect.length;
+									var startingFromQueryPrefixPos = fromQueryPrefix.substring(fromPrefixFind, thisFromQueryPrefixSelectLength + 1);
+									var startingFromQueryPrefixFind = startingFromQueryPrefixPos.search(',');
+									
+									if(startingfromQueryPosFind == -1)
+										{
+											var fromQueryAbbrevNoSpace = CMDBAbbrev;
+											fromQueryAbbrevUpdate = fromQueryAbbrev.replace(fromQueryAbbrevNoSpace, '');
+										}else{
+											var fromQuerAbbrevTrailComma = CMDBAbbrev + ',';
+											fromQueryAbbrevUpdate = fromQueryAbbrev.replace(fromQuerAbbrevTrailComma, '');
+										}
+										
+									if(startingFromQueryClassFind == -1)
+										{
+											var fromQueryClassNoSpace = CMDBClass + ' ' + CMDBAbbrev;
+											fromQueryUpdate = fromQuery.replace(fromQueryClassNoSpace, '');
+										}else{
+											var fromQuerClassTrailComma = CMDBClass + ' ' + CMDBAbbrev + ',';
+											fromQueryUpdate = fromQuery.replace(fromQuerClassTrailComma, '');
+										}
+										
+									if(startingFromQueryPrefixFind == -1)
+										{
+											var fromQueryPrefixNoSpace = VWPrefix;
+											fromQueryPrefixUpdate = fromQueryPrefix.replace(fromQueryPrefixNoSpace, '');
+										}else{
+											var fromQuerPrefixTrailComma = VWPrefix + ',';
+											fromQueryPrefixUpdate = fromQueryPrefix.replace(fromQuerPrefixTrailComma, '');
+										}
+								}
+								
+							if(fromFind > 0)
+								{
+									var fromQueryAbbrevPrevComma = ','+CMDBAbbrev;
+									fromQueryAbbrevUpdate = fromQueryAbbrev.replace(fromQueryAbbrevPrevComma, '');
+									
+									var fromQueryClassPrevComma = ','+CMDBClass + ' ' + CMDBAbbrev;
+									fromQueryUpdate = fromQuery.replace(fromQueryClassPrevComma, '');
+									
+									var fromQueryPrefixPrevComma = ','+VWPrefix;
+									fromQueryPrefixUpdate = fromQueryPrefix.replace(fromQueryPrefixPrevComma, '');
+								}										
+						}else{
+							fromFind = fromQueryAbbrev.search(CMDBAbbrev);
+							fromClassFind = fromQuery.search(CMDBClass);
+							fromPrefixAfterFind = fromQueryPrefix.search(VWPrefix);
+							
+							if(fromPrefixAfterFind == -1)	
+								{	
+									fromQueryUpdate = fromQuery + ',' + CMDBClass + ' ' + CMDBAbbrev;
+									fromQueryAbbrevUpdate = fromQueryAbbrev + ',' + CMDBAbbrev;
+									fromQueryPrefixUpdate = fromQueryPrefix + ',' + VWPrefix;
+								}else{
+									fromQueryUpdate = fromQuery;
+									fromQueryAbbrevUpdate = fromQueryAbbrev;
+									fromQueryPrefixUpdate = fromQueryPrefix;
+								}	
+						}					
+				}
+				
+			$('#fromQueryString').val(fromQueryUpdate);
+			$('#fromQueryAbbrev').val(fromQueryAbbrevUpdate);
+			$('#fromQueryPrefix').val(fromQueryPrefixUpdate);
+		}
+		
+	function dspCriteriaHelp()
+		{
+			var abbrevChosen;
+			
+			abbrevChosen = $('#fromQueryAbbrev').val();
+			
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.dspAddCriteriaHelp',
+			data: 'CATEGORY_ABBREV='+abbrevChosen,
+			//	added options top the .dialog('open') so that dialog box will scroll to the top instead of midway
+			success: function(msg){
+				//	$('#addCriteriaHelp').html(msg).dialog('open').scrollTop(0);
+				$('#addCriteriaHelp').html(msg).dialog({
+					/*maxWidth:750,
+                    maxHeight: 530,*/
+                    width: 750,
+                    height: 530,
+					modal: true,
+					autoOpen: true
+					}).scrollTop(0);
+			},
+			error: function(msg){alert('There was an error displaying the Additional Criteria help box');$("#searching").dialog('close');}
+			});			
+		}
+		
+	function dspIncludeTotals()
+		{
+			$("#dspIncludeTotals").dialog("open");
+		}
+		
+	//This is first query when a type or category is chosen. We need this to determin if 
+	//Category is chosen to grab all of the assoicated types
+		
+	function preLoad_type(type)
+		{
+			var typeVal;
+			var typeVal_all;
+			var allVar = 0;
+			
+			
+			
+			typeVal = type.search('all_');
+			if(typeVal != -1)
+				{
+					allVar = 1;
+				}
+				
+			typeVal_all = type.search('All');
+			if(typeVal_all != -1)
+				{
+					allVar = 1;
+				}
+			
+				if(allVar == 1)
+				{
+					type = type.replace('all_', '');
+					
+					$.ajax({
+					cache: false,
+					//dataType: "json",
+					type: 'post',
+					url: 'index.cfm?do=ah.qryAllTypeCategory',
+					data: 'TYPECHOSEN='+type,
+					success: function(msg) {load_type(msg, 2);},
+					error: function(msg){alert('There was an error loading all of the types');$("#searching").dialog('close');}
+					});
+				}else if (type == '65' && document.getElementById('schedChk').checked == false){
+						remove_type(type);
+						remove_selected('SCHED_','BMCSCHED','CMDB_RPT_SCHEDULES_VW');
+				}else{					
+					count_typeChosen++;
+					load_type(type, 1);				
+				}
+		}
+		
+	//This is second part this is what will populate the columns to display
+		
+	function load_type(type, multiIndicator)
+		{
+			var typeChosen;
+			var typeChosenSearch;
+			var typeChosenArray = new Array();
+			var multiTypeChosenArray = new Array();
+			var arrayLen;
+			var multiArrayLen;
+			var typeChosenSearchArray;
+			var multiTypeChosenSearchArray;
+			var goodType = 0;
+			var multiGoodType = 0;
+			
+			type = jQuery.trim(type);
+			type = type + '';
+			
+			if(multiIndicator == 2)
+				{
+					multiTypeChosenArray = type.split(',');
+					multiArrayLen = multiTypeChosenArray.length;
+					count_typeChosen = count_typeChosen + multiTypeChosenArray.length;
+				}				
+			
+			typeChosen = $('#typeChosen').val();
+			
+			typeChosenArray = typeChosen.split(',');
+			arrayLen = typeChosenArray.length;	
+			
+			if (typeChosen == '')
+				{
+					typeChosen = type;
+				}else{
+					if(multiIndicator == 1)
+						{		
+							for(i=0; i<arrayLen; i++)
+								{			
+									if(typeChosenArray[i] != type)
+										{
+											goodType = 1;
+																									
+										}else{
+											count_typeChosen--;	
+											goodType = 0;
+											break;	
+										}
+								}		
+								if(goodType == 1)
+									{
+										typeChosen = typeChosen + ',' + type;		
+									}
+						}else if(multiIndicator == 2)
+							{
+								for(c=0; c<multiArrayLen; c++)
+									{			
+										for(i=0; i<arrayLen; i++)
+											{
+												if(multiTypeChosenArray[c] != typeChosenArray[i])
+													{
+														multiGoodType = 1;
+																												
+													}else{
+														count_typeChosen--;	
+														multiGoodType = 0;
+														break;	
+													}
+											}
+											if(multiGoodType == 1)
+												{
+													typeChosen = typeChosen + ',' + multiTypeChosenArray[c];		
+												}
+								}		
+								
+							}
+				}
+				
+			
+			if(count_typeChosen > 1)
+				{
+					$('#add_criteria').attr('disabled', true);
+					$('#add_criteria').val('AND ');
+					$('#add_criteria_disable').show('fast');
+				}else{
+					$('#add_criteria').attr('disabled', false);
+					$('#add_criteria_disable').hide('fast');
+				}
+
+			$('#typeChosen').val(typeChosen);	
+			$('#CI_Type').val(-1);
+			
+			
+			
+			var modifySearch = $('#edit_SavedSearch').val();
+			var include_total = $('#include_total_chk').val();
+			
+			if (count_typeChosen >= 0){
+				$.ajax({
+				cache: false,
+				//dataType: "json",
+				type: 'post',
+				url: 'index.cfm?do=ah.qryCategory',
+				data: 'TYPECHOSEN='+typeChosen+'&count_typeChosen='+count_typeChosen,
+				success: function(msg){
+					$("#type_chosen_div").html(msg);
+					UpdateHardwareManufacturer(typeChosen,count_typeChosen);	// this will launch the function to update the hardware manufacturer drop down list
+				},
+				error: function(msg){alert('There was an error loading a single type');$("#searching").dialog('close');}
+				});
+			}
+			else {
+				$("#hardware_chosen_count").text('');
+				$("#hardware_chosen_div").html('');
+				$("#Hard_Manufacturer").html('<option value="-1">--- Choose Type First ---</option>');					
+			}
+			var selectedCols = $('#selectQueryStringId').val();
+			
+			if (selectedCols != '')
+				{
+					modifySearch = 1;					
+				}else{
+					modifySearch = 1;
+					selectedCols = $('#savedColsToDisplay').val();
+				}
+				
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryLoadColsbyType',
+			data: 'TYPECHOSEN='+typeChosen+'&count_typeChosen='+count_typeChosen+'&include_total='+include_total+'&edit_SavedSearch='+modifySearch+'&SAVED_SEARCH_SCOLSDISPLAYID_LIST='+selectedCols,
+			success: function(msg) {
+				//	console.log(msg);
+				$("#cols_to_display").html(msg);
+				$("#searching").dialog('close');
+				vtip();
+			},
+			error: function(msg){
+				alert('There was an error loading the columns to display');
+				$("#searching").dialog('close');
+			}
+			});
+		}
+		
+	function UpdateHardwareManufacturer(typeChosen,count_typeChosen)
+		{
+			//	console.log('line 646 - updating MF list');
+			$.ajax({
+				cache: false,
+				//dataType: "json",
+				type: 'post',
+				url: 'index.cfm?do=ah.qryUpdHardwareOptionList',
+				data: 'TYPECHOSEN='+typeChosen+'&count_typeChosen='+count_typeChosen,
+				success: function(msg){$("#Hard_Manufacturer").html(msg);$("#searching").dialog('close');},
+				error: function(msg){alert('There was an error loading Hardware Manufacturer list');$("#searching").dialog('close');}
+			});
+		}
+	
+		
+	function remove_type(type)
+		{
+			var typeChosen;
+			var typeChosenSearch;
+			
+			count_typeChosen--;
+			
+			if(count_typeChosen == 0)
+				{
+					typeChosen = '';
+				}else{
+					typeChosen = $('#typeChosen').val();
+					
+					typePreComma = ',' + type;
+					typeTrailComma = type + ',';
+					
+					typeChosen = typeChosen.replace(typePreComma, '');
+					typeChosen = typeChosen.replace(typeTrailComma, '');
+					typeChosen = typeChosen.replace(type, '');
+				}
+				
+			typeChosenSearch = typeChosen.search(',');
+			if(typeChosenSearch == -1)
+				{
+					$('#add_criteria').removeAttr('disabled');
+					$('#add_criteria_disable').hide('fast');
+				}
+			$('#typeChosen').val(typeChosen);
+			
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryCategory',
+			data: 'TYPECHOSEN='+typeChosen+'&count_typeChosen='+count_typeChosen,
+			success: function(msg) {$("#type_chosen_div").html(msg);},
+			error: function(msg){alert('There was an error removing a type');$("#searching").dialog('close');}
+			});
+			
+			var selectedCols = $('#selectQueryStringId').val();
+			
+			if (selectedCols != '')
+				{
+					modifySearch = 1;					
+				}else{
+					modifySearch = 1;
+					selectedCols = $('#savedColsToDisplay').val();
+				}
+			
+			
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryLoadColsbyType',
+			data: 'TYPECHOSEN='+typeChosen+'&count_typeChosen='+count_typeChosen+'&edit_SavedSearch='+modifySearch+'&SAVED_SEARCH_SCOLSDISPLAYID_LIST='+selectedCols,
+			success: function(msg) {$("#cols_to_display").html(msg);$("#searching").dialog('close');},
+			error: function(msg){alert('There was an error removing columns to display');$("#searching").dialog('close');}
+			});
+			
+			//	if the count_typeChosen is 0, that means there are no types selected so we should remove all the manufacturer hardware selected;
+			if(count_typeChosen == 0){
+				$("#Hard_Manufacturer").html('<option value="-1">--- Choose Type First ---</option>');				
+				$("#hardware_chosen_div").html('');
+				$("#hardware_chosen_count").html('');
+			}
+			else{
+				$.ajax({
+				cache: false,
+				//dataType: "json",
+				type: 'post',
+				url: 'index.cfm?do=ah.qryUpdHardwareOptionList',
+				data: 'TYPECHOSEN='+typeChosen+'&count_typeChosen='+count_typeChosen,
+				success: function(msg) {
+					$("#Hard_Manufacturer").html(msg);
+					$("#searching").dialog('close');
+					//	$('#hardwareChosen').val(hardwareChosen);			
+				},
+				error: function(msg){alert('There was an error updating the Hardware Manufacturer drop down options');$("#searching").dialog('close');}
+				});
+			}
+		}
+		
+	function load_ciName(ciName)
+		{
+			$('#CINameChosen').val(ciName);
+		}
+
+	function load_Asset(Asset)
+		{
+			var assetTypeChosen;
+			var assetTypeChosenArray;
+			var assetTypeChosenArray_Len;
+			var assetTypeAllSearch;
+			var multiAssetTypeChosenArray;
+			var multiAssetTypeChosenArrayLen;
+			var goodType;
+			var multiGoodType;
+			
+			assetTypeChosen = $('#assetTypeChosen').val();			
+			assetTypeChosenArray = assetTypeChosen.split(',');
+			assetTypeChosenArray_Len = assetTypeChosenArray.length;	
+			
+			assetTypeAllSearch = Asset.search(',');
+			
+			if(assetTypeChosen == '')
+				{
+					assetTypeChosen = Asset;
+					if(assetTypeAllSearch == -1)
+						{							
+							count_assetTypeChosen++;
+						}else{
+							multiAssetTypeChosenArray = Asset.split(',');
+							multiAssetTypeChosenArrayLen = multiAssetTypeChosenArray.length;
+							count_assetTypeChosen = multiAssetTypeChosenArrayLen;
+						}
+				}else{
+					if(assetTypeAllSearch == -1)
+						{
+							for(i=0; i<assetTypeChosenArray_Len; i++)
+								{	
+									if(assetTypeChosenArray[i] != Asset)
+										{
+											goodType = 1;																																
+										}else{
+											goodType = 0;
+											break;	
+										}
+								}		
+								
+								if(goodType == 1)
+									{
+										assetTypeChosen = assetTypeChosen + ',' + Asset;
+										count_assetTypeChosen++;
+									}	
+						}else{
+							multiAssetTypeChosenArray = Asset.split(',');
+							multiAssetTypeChosenArrayLen = multiAssetTypeChosenArray.length;
+							
+							for(c=0; c<multiAssetTypeChosenArrayLen; c++)
+								{			
+									for(i=0; i<assetTypeChosenArray_Len; i++)
+										{
+											if(multiAssetTypeChosenArray[c] != assetTypeChosenArray[i])
+												{
+													multiGoodType = 1;
+												}else{													
+													multiGoodType = 0;
+													break;	
+												}
+										}
+										if(multiGoodType == 1)
+											{
+												assetTypeChosen = assetTypeChosen + ',' + multiAssetTypeChosenArray[c];	
+												count_assetTypeChosen++;	
+											}
+							}		
+						}		
+				}			
+			
+			$('#assetTypeChosen').val(assetTypeChosen);
+			$('#Asset_Type').val(-1);
+			
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryAsset',
+			data: 'ASSET_CHOSEN='+assetTypeChosen+'&count_assetTypeChosen='+count_assetTypeChosen,
+			success: function(msg) {$("#asset_type_chosen_div").html(msg);$("#searching").dialog('close');},
+			error: function(msg){alert('There was an error loading the asset types');$("#searching").dialog('close');}
+			});
+		}
+		
+	function remove_asset(Asset)
+		{
+			var assetTypeChosen;
+			var assetPreComma;
+			var assetTrailComma;
+			
+			count_assetTypeChosen--;
+			
+			if(count_assetTypeChosen == 0)
+				{
+					assetTypeChosen = '';
+				}else{
+					assetTypeChosen = $('#assetTypeChosen').val();
+					
+					assetPreComma = ',' + Asset;
+					assetTrailComma = Asset + ',';
+					
+					assetTypeChosen = assetTypeChosen.replace(assetPreComma, '');
+					assetTypeChosen = assetTypeChosen.replace(assetTrailComma, '');
+					assetTypeChosen = assetTypeChosen.replace(Asset, '');
+				}
+										
+			$('#assetTypeChosen').val(assetTypeChosen);
+			$('#Asset_Type').val(-1);
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryAsset',
+			data: 'ASSET_CHOSEN='+assetTypeChosen+'&count_assetTypeChosen='+count_assetTypeChosen,
+			success: function(msg) {$("#asset_type_chosen_div").html(msg);$("#searching").dialog('close');},
+			error: function(msg){alert('There was an error removing the asset type');$("#searching").dialog('close');}
+			});
+		}
+		
+	function load_Env(env)
+		{
+			var envCatChosen;
+			var envCatChosenArray;
+			var envCatChosenArray_Len;
+			var envCatAllSearch;
+			var multiEnvCatChosenArray;
+			var multiEnvCatChosenArrayLen;
+			var goodType;
+			var multiGoodType;
+			
+			envCatChosen = $('#envCatChosen').val();
+			envCatChosenArray = envCatChosen.split(',');
+			envCatChosenArray_Len = envCatChosenArray.length;	
+			
+			envCatAllSearch = env.search(',');		
+			
+			if(envCatChosen == '')
+				{
+					envCatChosen = env;
+					if(envCatAllSearch == -1)
+						{							
+							count_envCatChosen++;
+						}else{
+							multiEnvCatChosenArray = env.split(',');
+							multiEnvCatChosenArrayLen = multiEnvCatChosenArray.length;
+							count_envCatChosen = multiEnvCatChosenArrayLen;
+						}
+				}else{
+					if(envCatAllSearch == -1)
+						{
+							for(i=0; i<envCatChosenArray_Len; i++)
+								{	
+									if(envCatChosenArray[i] != env)
+										{
+											goodType = 1;																																
+										}else{
+											goodType = 0;
+											break;	
+										}
+								}		
+								
+								if(goodType == 1)
+									{
+										envCatChosen = envCatChosen + ',' + env;
+										count_envCatChosen++;
+									}	
+						}else{
+							multiEnvCatChosenArray = env.split(',');
+							multiEnvCatChosenArrayLen = multiEnvCatChosenArray.length;
+							
+							for(c=0; c<multiEnvCatChosenArrayLen; c++)
+								{			
+									for(i=0; i<envCatChosenArray_Len; i++)
+										{
+											if(multiEnvCatChosenArray[c] != envCatChosenArray[i])
+												{
+													multiGoodType = 1;
+												}else{													
+													multiGoodType = 0;
+													break;	
+												}
+										}
+										if(multiGoodType == 1)
+											{
+												envCatChosen = envCatChosen + ',' + multiEnvCatChosenArray[c];	
+												count_envCatChosen++;	
+											}
+							}		
+						}		
+				}			
+										
+			$('#envCatChosen').val(envCatChosen);
+			$('#Env_Cat').val(-1);		
+			
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryEnvCat',
+			data: 'ENV_CAT_CHOSEN='+envCatChosen+'&count_envCatChosen='+count_envCatChosen,
+			success: function(msg) {$("#env_cat_chosen_div").html(msg);$("#searching").dialog('close');},
+			error: function(msg){alert('There was an error loading the environment category');$("#searching").dialog('close');}
+			});
+		}
+		
+	function remove_envcat(env)
+		{
+			var envCatChosen;
+			var envCatPreComma;
+			var envCatTrailComma;
+			
+			count_envCatChosen--;
+			
+			if(count_envCatChosen == 0)
+				{
+					envCatChosen = '';
+				}else{
+					envCatChosen = $('#envCatChosen').val();
+					
+					//envCatPreComma = ',' + env;
+					envCatTrailComma = env + ',';
+					
+					//envCatChosen = envCatChosen.replace(envCatPreComma, '');
+					envCatChosen = envCatChosen.replace(envCatTrailComma, '');
+					envCatChosen = envCatChosen.replace(env, '');
+				}
+										
+			$('#envCatChosen').val(envCatChosen);
+			$('#Env_Cat').val(-1);
+			
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryEnvCat',
+			data: 'ENV_CAT_CHOSEN='+envCatChosen+'&count_envCatChosen='+count_envCatChosen,
+			success: function(msg) {$("#env_cat_chosen_div").html(msg);$("#searching").dialog('close');},
+			error: function(msg){alert('There was an error removing the environment category');$("#searching").dialog('close');}
+			});
+		}
+		
+	function load_hardware(hardware)
+		{
+			var typeChosen;
+			var hardwareChosen;
+			var hardwareChosenArray;
+			var hardwareChosenArray_Len;
+			var multihardwareChosenArray;
+			var multihardwareChosenArrayLen;
+			var goodType;
+			var multiGoodType;
+			
+			//	$('#hardwareChosen').val( encodeURIComponent(hardwareChosen) );
+			$('#Hard_Manufacturer').val(-1);
+			//	this just takes care of any remaining ~ that might sneak in
+			if ( hardware.indexOf('~') > -1 ){
+				hardware = hardware.replace(/~/ig, '%7E');
+			}
+			
+			if ( hardware.indexOf('%7E') > -1 ){
+				$('#hardwareChosen').val('');
+				$("#hardware_chosen_div").html('');
+				hardwareChosen =  hardware;
+				hardwareChosen = hardwareChosen.replace('%7E%7E', '%7E');			
+				hardwareChosenArray = hardwareChosen.split('%7E');
+				hardwareChosenArray_Len = hardwareChosenArray.length;	
+			}
+			else {
+				hardwareChosen =  $('#hardwareChosen').val();
+				hardwareChosenArray = hardwareChosen.split('%7E');
+				hardwareChosenArray.push( hardware );
+				hardwareChosenArray_Len = hardwareChosenArray.length;	
+			}
+
+			
+			var uniquehardware = [];
+			$.each(hardwareChosenArray, function(i, el){
+				//	if($.inArray(el, uniquehardware) === -1) uniquehardware.push(el);
+				if($.inArray(el, uniquehardware) === -1){
+					uniquehardware.push(el);
+				}
+			});
+			//	this creates and populates the array with an encoded ~ as the delimiter
+			//	dataset_hardwareChosenArray = y.split('%7E');
+			//	loop over the items in the array and when the match is found, remove it
+			x = uniquehardware.sort();
+			//	console.log('x = ' +x);
+			$("#hardwareChosen").val('');
+			$("#hardware_chosen_div").html('');
+			//	$("#hardwareChosen").val(hardware.join('%7E'));
+			var newTempArray = new Array();
+			for(var i in x){
+				if (x[i] != ''){
+					newTempArray.push(x[i]);
+					//	console.log('inside loop = ' + x[i]);
+					$("#hardware_chosen_div").append( '<div style="padding:0px 0px 0px 10px;" id="mfid_' + i + '">'+ decodeURIComponent(x[i]) + '&nbsp;<a href="javascript:void(\'\'); " onclick="remove_hardware(\'' + decodeURIComponent(x[i])+ '\',\'' + i + '\');">remove</a></div>');
+				}
+			}
+			$("#hardwareChosen").val(newTempArray.join('%7E'));
+			if (newTempArray.length > 0){
+				$('#hardware_chosen_count').html(newTempArray.length + ' Hardware Manufacturer(s) chosen');
+			}
+			else {
+				$('#hardware_chosen_count').html(''); 
+			}
+				
+		}
+		
+	function remove_hardware(hardware, id)
+		{
+			//	setup tmp var for array
+			y = $('#hardwareChosen').val();
+			//this creates and populates the array with an encoded ~ as the delimiter
+			var dataset_hardwareChosenArray = y.split('%7E');
+			//	loop over the items in the array and when the match is found, remove it
+			for(var i in dataset_hardwareChosenArray){
+				//	console.log( 'full ' + decodeURIComponent( dataset_hardwareChosenArray[i] )== decodeURIComponent(hardware) );
+				//	console.log( 'left ' + decodeURIComponent(dataset_hardwareChosenArray[i]) );
+				//	console.log( 'right ' + decodeURIComponent(hardware) );
+				if( decodeURIComponent( dataset_hardwareChosenArray[i] )== decodeURIComponent(hardware) ){
+					// remove the element from the array
+					//	dataset_hardwareChosenArray.splice(remove[i],1);
+					dataset_hardwareChosenArray.splice(i,1);
+					//	hide the element in the list since we just removed it
+					$('#mfid_' + id).hide();
+					break;
+					}
+			}
+			//	set array back to a list using the encoded value of a ~ as the delimiter
+			dataset_hardwareChosenstr = dataset_hardwareChosenArray.join("%7E");
+			//	console.log('dataset_hardwareChosenstr = ' + dataset_hardwareChosenstr);
+			//good up to here
+			$('#hardwareChosen').val( dataset_hardwareChosenstr.toString() );
+			//alert( $('#hardwareChosen').val() );
+			if (dataset_hardwareChosenArray.length > 0){
+				$('#hardware_chosen_count').html(dataset_hardwareChosenArray.length + ' Hardware Manufacturer(s) chosen');
+			}
+			else {
+				$('#hardware_chosen_count').html(''); 
+			}
+
+		}
+
+		
+	function load_Dataset(datasetid)
+		{
+			var datasetChosen;
+			var datasetChosenArray;			
+			var datasetChosenArray_Len;
+			var datasetAllSearch;
+			var multidatasetChosenArray;
+			var multidatasetChosenArrayLen;
+			var goodType;
+			var multiGoodType;
+			
+			datasetChosen = $('#datasetChosen').val();
+			datasetChosenArray = datasetChosen.split(',');
+			datasetChosenArray_Len = datasetChosenArray.length;	
+			
+			datasetAllSearch = datasetid.search(',');
+			
+			if(datasetChosen == '')
+				{
+					datasetChosen = datasetid;
+					if(datasetAllSearch == -1)
+						{							
+							count_datasetChosen++;
+						}else{
+							multidatasetChosenArray = datasetid.split(',');
+							multidatasetChosenArrayLen = multidatasetChosenArray.length;
+							count_datasetChosen = multidatasetChosenArrayLen;
+						}
+				}else{
+					if(datasetAllSearch == -1)
+						{
+							for(i=0; i<datasetChosenArray_Len; i++)
+								{	
+									if(datasetChosenArray[i] != datasetid)
+										{
+											goodType = 1;																																
+										}else{
+											goodType = 0;
+											break;	
+										}
+								}		
+								
+								if(goodType == 1)
+									{
+										datasetChosen = datasetChosen + ',' + datasetid;
+										count_datasetChosen++;
+									}	
+						}else{
+							multidatasetChosenArray = datasetid.split(',');
+							multidatasetChosenArrayLen = multidatasetChosenArray.length;
+							
+							for(c=0; c<multidatasetChosenArrayLen; c++)
+								{			
+									for(i=0; i<datasetChosenArray_Len; i++)
+										{
+											if(multidatasetChosenArray[c] != datasetChosenArray[i])
+												{
+													multiGoodType = 1;
+												}else{													
+													multiGoodType = 0;
+													break;	
+												}
+										}
+										if(multiGoodType == 1)
+											{
+												datasetChosen = datasetChosen + ',' + multidatasetChosenArray[c];	
+												count_datasetChosen++;	
+											}
+							}		
+						}		
+				}
+										
+			$('#datasetChosen').val(datasetChosen);
+			$('#datasetID').val(-1);
+			
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryDatasetsChosen',
+			data: 'DATASET_CHOSEN='+datasetChosen+'&count_datasetChosen='+count_datasetChosen,
+			success: function(msg) {$("#dataset_chosen_div").html(msg);$("#searching").dialog('close');},
+			error: function(msg){alert('There was an error loading the dataset ID');$("#searching").dialog('close');}
+			});
+		}
+		
+	function remove_dataset(datasetid)
+		{
+			var datasetChosen;
+			var datasetPreComma;
+			var datasetTrailComma;
+			
+			count_datasetChosen--;
+			
+			if(count_datasetChosen == 0)
+				{
+					datasetChosen = '';
+				}else{
+					datasetChosen = $('#datasetChosen').val();
+					
+					datasetPreComma = ',' + datasetid;
+					datasetTrailComma = datasetid + ',';
+					
+					datasetChosen = datasetChosen.replace(datasetPreComma, '');
+					datasetChosen = datasetChosen.replace(datasetTrailComma, '');
+					datasetChosen = datasetChosen.replace(datasetid, '');
+				}
+										
+			$('#datasetChosen').val(datasetChosen);
+			$('#datasetID').val(-1);
+			
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryDatasetsChosen',
+			data: 'DATASET_CHOSEN='+datasetChosen+'&count_datasetChosen='+count_datasetChosen,
+			success: function(msg) {$("#dataset_chosen_div").html(msg);$("#searching").dialog('close');},
+			error: function(msg){alert('There was an error removing the dataset ID');$("#searching").dialog('close');}
+			});
+		}
+				
+	function load_people(sbcuid)
+		{
+			var peopleChosen;
+			var peopleChosenArray;			
+			var peopleChosenArray_Len;
+			var peopleAllSearch;
+			var multipeopleChosenArray;
+			var multipeopleChosenArrayLen;
+			var goodType;
+			var multiGoodType;
+			
+			peopleChosen = $('#peopleChosen').val();
+			peopleChosenArray = peopleChosen.split(',');
+			peopleChosenArray_Len = peopleChosenArray.length;	
+			
+			peopleAllSearch = sbcuid.search(',');		
+			
+			if(peopleChosen == '')
+				{
+					peopleChosen = sbcuid;
+					if(peopleAllSearch == -1)
+						{							
+							count_peopleChosen++;
+						}else{
+							multipeopleChosenArray = sbcuid.split(',');
+							multipeopleChosenArrayLen = multipeopleChosenArray.length;
+							count_peopleChosen = multipeopleChosenArrayLen;
+						}
+				}else{					
+					if(peopleAllSearch == -1)
+						{
+							for(i=0; i<peopleChosenArray_Len; i++)
+								{	
+									if(peopleChosenArray[i] != sbcuid)
+										{
+											goodType = 1;																																
+										}else{
+											goodType = 0;
+											break;	
+										}
+								}		
+								
+								if(goodType == 1)
+									{
+										peopleChosen = peopleChosen + ',' + sbcuid;
+										count_peopleChosen++;
+									}	
+						}else{
+							multipeopleChosenArray = sbcuid.split(',');
+							multipeopleChosenArrayLen = multipeopleChosenArray.length;
+							
+							for(c=0; c<multipeopleChosenArrayLen; c++)
+								{			
+									for(i=0; i<peopleChosenArray_Len; i++)
+										{
+											if(multipeopleChosenArray[c] != peopleChosenArray[i])
+												{
+													multiGoodType = 1;
+												}else{													
+													multiGoodType = 0;
+													break;	
+												}
+										}
+										if(multiGoodType == 1)
+											{
+												peopleChosen = peopleChosen + ',' + multipeopleChosenArray[c];	
+												count_peopleChosen++;	
+											}
+							}		
+						}		
+				}
+										
+			$('#peopleChosen').val(peopleChosen);
+			
+			if(document.getElementById('suborChk').checked == true)
+				{
+					chk_subordinate();
+				}
+			
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryPeopleChosen',
+			data: 'SBCUID='+peopleChosen+'&count_peopleChosen='+count_peopleChosen,
+			success: function(msg) {$("#people_search_add").html(msg);$("#searching").dialog('close');},
+			error: function(msg){alert('There was an error loading the people search');$("#searching").dialog('close');}
+			});
+			
+		}
+		
+	function remove_people(sbcuid)
+		{
+			var peopleChosen;
+			var peoplePreComma;
+			var peopleTrailComma;
+			
+			count_peopleChosen--;
+			
+			if(count_peopleChosen == 0)
+				{
+					peopleChosen = '';
+				}else{
+					peopleChosen = $('#peopleChosen').val();
+					
+					peoplePreComma = ',' + sbcuid;
+					peopleTrailComma = sbcuid + ',';
+					
+					peopleChosen = peopleChosen.replace(peoplePreComma, '');
+					peopleChosen = peopleChosen.replace(peopleTrailComma, '');
+					peopleChosen = peopleChosen.replace(sbcuid, '');
+				}
+										
+			$('#peopleChosen').val(peopleChosen);
+			
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryPeopleChosen',
+			data: 'SBCUID='+peopleChosen+'&count_peopleChosen='+count_peopleChosen,
+			success: function(msg) {$("#people_search_add").html(msg);$("#searching").dialog('close');},
+			error: function(msg){alert('There was an error removing from the people search');$("#searching").dialog('close');}
+			});
+		}
+		
+	function load_location(instid)
+		{
+			var locationChosen;
+			var locationChosenArray;			
+			var locationChosenArray_Len;
+			var locationAllSearch;
+			var multilocationChosenArray;
+			var multilocationChosenArrayLen;
+			var goodType;
+			var multiGoodType;
+			
+			locationChosen = $('#locationChosen').val();
+			locationChosenArray = locationChosen.split(',');
+			locationChosenArray_Len = locationChosenArray.length;	
+			
+			locationAllSearch = instid.search(',');		
+			
+			if(locationChosen == '')
+				{
+					locationChosen = instid;
+					if(locationAllSearch == -1)
+						{							
+							count_locationChosen++;
+						}else{
+							multilocationChosenArray = instid.split(',');
+							multilocationChosenArrayLen = multilocationChosenArray.length;
+							count_locationChosen = multilocationChosenArrayLen;
+						}
+				}else{
+					if(locationAllSearch == -1)
+						{
+							for(i=0; i<locationChosenArray_Len; i++)
+								{	
+									if(locationChosenArray[i] != instid)
+										{
+											goodType = 1;																																
+										}else{
+											goodType = 0;
+											break;	
+										}
+								}		
+								
+								if(goodType == 1)
+									{
+										locationChosen = locationChosen + ',' + instid;
+										count_locationChosen++;
+									}	
+						}else{
+							multilocationChosenArray = instid.split(',');
+							multilocationChosenArrayLen = multilocationChosenArray.length;
+							
+							for(c=0; c<multilocationChosenArrayLen; c++)
+								{			
+									for(i=0; i<locationChosenArray_Len; i++)
+										{
+											if(multilocationChosenArray[c] != locationChosenArray[i])
+												{
+													multiGoodType = 1;
+												}else{													
+													multiGoodType = 0;
+													break;	
+												}
+										}
+										if(multiGoodType == 1)
+											{
+												locationChosen = locationChosen + ',' + multilocationChosenArray[c];	
+												count_locationChosen++;	
+											}
+							}		
+						}		
+				}
+										
+			$('#locationChosen').val(locationChosen);
+			
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryLocationChosen',
+			data: 'INSTANCEID='+locationChosen+'&count_locationChosen='+count_locationChosen,
+			success: function(msg) {$("#location_search_add").html(msg);$("#searching").dialog('close');},
+			error: function(msg){alert('There was an error loading the location search');$("#searching").dialog('close');}
+			});
+		}
+
+	function remove_location(instid)
+		{
+			var locationChosen;
+			var locationPreComma;
+			var locationTrailComma;
+			
+			count_locationChosen--;
+			
+			if(count_locationChosen == 0)
+				{
+					locationChosen = '';
+				}else{
+					locationChosen = $('#locationChosen').val();
+					
+					locationPreComma = ',' + instid;
+					locationTrailComma = instid + ',';
+					
+					locationChosen = locationChosen.replace(locationPreComma, '');
+					locationChosen = locationChosen.replace(locationTrailComma, '');
+					locationChosen = locationChosen.replace(instid, '');
+				}
+										
+			$('#locationChosen').val(locationChosen);
+			
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryLocationChosen',
+			data: 'INSTANCEID='+locationChosen+'&count_locationChosen='+count_locationChosen,
+			success: function(msg) {$("#location_search_add").html(msg);$("#searching").dialog('close');},
+			error: function(msg){alert('There was an error removing from the location search');$("#searching").dialog('close');}
+			});
+		}
+		
+	function clear_this(div_clear)
+		{
+			if(div_clear == 'type_chosen_div')
+				{
+					count_typeChosen = 0;
+	
+					$('#US_chk').prop( "disabled", false );
+					
+					
+					
+					if(document.getElementById('schedChk').checked == true)
+					{
+						$("#schedChk").attr("checked", false);
+					}
+					
+					$('#typeChosen').val('');
+					$('#fromQueryString').val('');
+					$('#fromQueryAbbrev').val('');
+					$('#fromQueryPrefix').val('');
+					$('#selectQueryString').val('');
+					$('#selectQueryStringId').val('');
+					$('#selectQueryStringDisp').val('');
+					$('#savedColsToDisplay').val('');
+					$("#hardware_chosen_count").html('');
+					$("#hardware_chosen_div").html('');
+					
+					$.ajax({
+					cache: false,
+					//dataType: "json",
+					type: 'post',
+					url: 'index.cfm?do=ah.qryCategory',
+					data: 'TYPE_VAL=&TYPECHOSEN=&count_typeChosen='+count_typeChosen,
+					success: function(msg) {$("#type_chosen_div").html(msg);},
+					error: function(msg){alert('There was an error with clearing the type');$("#searching").dialog('close');}
+					});
+					
+					$.ajax({
+					cache: false,
+					//dataType: "json",
+					type: 'post',
+					url: 'index.cfm?do=ah.qryLoadColsbyType',
+					data: 'TYPE_VAL=&TYPECHOSEN=&count_typeChosen='+count_typeChosen,
+					success: function(msg) {$("#cols_to_display").html(msg);$("#searching").dialog('close');},
+					error: function(msg){alert('There was an error clearing the columns to display');$("#searching").dialog('close');}
+					});
+					
+					//	load selected hardware
+					$("#hardware_chosen_count").text('');
+					$("#hardware_chosen_div").html('');
+					$("#Hard_Manufacturer").html('<option value="-1">--- Choose Type First ---</option>');					
+				
+					hardwareChosen = $('#hardwareChosen').val('');
+					count_hardwareChosen = 0;
+				}
+			else if(div_clear == 'asset_type_chosen_div')
+				{
+					count_assetTypeChosen = 0;
+					
+					$('#assetTypeChosen').val('');
+					
+					$.ajax({
+					cache: false,
+					//dataType: "json",
+					type: 'post',
+					url: 'index.cfm?do=ah.qryAsset',
+					data: 'ASSET_CHOSEN=&count_assetTypeChosen='+count_assetTypeChosen,
+					success: function(msg) {$("#asset_type_chosen_div").html(msg);$("#searching").dialog('close');},
+					error: function(msg){alert('There was an error clearing the asset types');$("#searching").dialog('close');}
+					});					
+				}
+			else if(div_clear == 'env_cat_chosen_div')
+				{
+					count_envCatChosen = 0;
+					
+					$('#envCatChosen').val('');
+					
+					$.ajax({
+					cache: false,
+					//dataType: "json",
+					type: 'post',
+					url: 'index.cfm?do=ah.qryEnvCat',
+					data: 'ENV_CAT_CHOSEN=&count_envCatChosen='+count_envCatChosen,
+					success: function(msg) {$("#env_cat_chosen_div").html(msg);$("#searching").dialog('close');},
+					error: function(msg){alert('There was an error clearing environment category');$("#searching").dialog('close');}
+					});					
+				}
+				
+			else if(div_clear == 'hardware_chosen_div')
+				{
+					count_hardwareChosen = 0;
+					
+					$('#hardwareChosen').val('');
+					$('#hardware_chosen_div').html('');
+					$('#hardware_chosen_count').html(''); 
+				}
+			else if(div_clear == 'dataset_chosen_div')
+				{
+					count_datasetChosen = 0;
+					
+					$('#datasetChosen').val('');
+					
+					$.ajax({
+					cache: false,
+					//dataType: "json",
+					type: 'post',
+					url: 'index.cfm?do=ah.qryDatasetsChosen',
+					data: 'DATASET_CHOSEN=&count_datasetChosen='+count_datasetChosen,
+					success: function(msg) {$("#dataset_chosen_div").html(msg);$("#searching").dialog('close');},
+					error: function(msg){alert('There was an error clearing dataset IDs');$("#searching").dialog('close');}
+					});					
+				}
+		}
+				
+		
+	// Updated Contacts Function
+	function get_contacts_data(x) {
+		var searchBox = $('#text_field');
+		var criteria = searchBox.val();
+		var resultsContainer = $("#people_search");
+		// Don't search for less than 2 chars
+		if(x.length < 3)
+		{
+			return;
+		}
+			
+		var search_request = searchBox.data('request_object');
+		if(search_request != null){
+			search_request.abort();
+		}
+		//alert(x.length);
+		if(x.value.length > 2)
+			{
+				//alert('if');
+				searchBox.data('request_object', $.ajax({
+				type: 'get',
+				url: 'index.cfm?do=ah.qryPerson',
+				data: 'q=' + encodeURIComponent(x.value),
+				beforeSend: function(){resultsContainer.html('Please Wait... (Continue Typing to Refine Search).');},
+				success: 	function(data,status,xhr){
+							searchBox.data('request_object',null);
+							resultsContainer.html(data);
+				},	
+				error: function(request, err, errorThrown){
+				request.abort();
+				searchBox.data('request_object', null);
+				}
+				}));
+			}
+			else
+			{
+				searchBox.data('request_object','');
+				//alert('else');
+				searchBox.data('request_object', $.ajax({
+				type: 'get',
+				url: 'index.cfm?do=ah.qryPerson',
+				data: 'q=' + encodeURIComponent(''),
+				beforeSend: function(){resultsContainer.html('');},
+				success: function(data,status,xhr){
+				//searchBox.data('request_object',null);
+				resultsContainer.html(data);
+				},	
+				error: function(request, err, errorThrown){
+				request.abort();
+				searchBox.data('request_object', null);
+				}
+				}));
+			}
+		}
+
+
+	// Updated Location Function
+	function get_loc_data(address) {
+		var searchBox = $('#loc_Address');
+		var criteria = searchBox.val();
+		var resultsContainer = $("#location_search");
+		
+		// Don't search for less than 2 chars
+		if(address.length < 3)
+		{
+			return;
+		}
+			
+		var search_request = searchBox.data('request_object');
+			
+		if(search_request != null){
+			search_request.abort();
+		}
+		/* Change for Request 1023059 Start - Danish Haseeb*/
+		if(address.value.length > 2)
+		{		
+			searchBox.data('request_object', $.ajax({
+			type: 'get',
+			url: 'index.cfm?do=ah.qryLocation',
+			data: 'q=' + encodeURIComponent(address.value),
+			beforeSend: function(){resultsContainer.html('Please Wait... (Continue Typing to Refine Search).');},
+			success: function(data,status,xhr){
+			searchBox.data('request_object',null);
+			resultsContainer.html(data);
+			},	
+			error: function(request, err, errorThrown){
+			request.abort();
+			searchBox.data('request_object', null);
+			}
+			}));
+		}
+		else
+		{
+			searchBox.data('request_object','');
+			searchBox.data('request_object', $.ajax({
+			type: 'get',
+			url: 'index.cfm?do=ah.qryLocation',
+			data: 'q=' + encodeURIComponent(''),
+			beforeSend: function(){resultsContainer.html('');},
+			success: function(data,status,xhr){
+			resultsContainer.html(data);
+			},	
+			error: function(request, err, errorThrown){
+			request.abort();
+			searchBox.data('request_object', null);
+			}
+			}));				
+		}
+		/* Change for Request 1023059 End - Danish Haseeb*/
+	}
+
+	function load_cols_to_display(dispCatID){
+			var typeChosen;
+			
+			typeChosen = $('#typeChosen').val();
+			
+			if (typeChosen == '')
+				{
+					typeChosen = dispCatID;
+				}else{				
+					typeChosen = typeChosen + ', ' + dispCatID;
+				}
+			
+			$('#typeChosen').val(typeChosen);
+			
+			$.ajax({
+			cache: false,
+			//dataType: "json",
+			type: 'post',
+			url: 'index.cfm?do=ah.qryLoadColsbyType',
+			data: 'TYPECHOSEN='+typeChosen,
+			success: function(msg) {$("#cols_to_display").html(msg);$("#searching").dialog('close');},
+			error: function(msg){alert('There was an error with loading columns to display');$("#searching").dialog('close');}
+			});
+		}
+
+	function chk_type()
+		{
+			var fromQueryPrefixCheck;
+			
+			fromQueryPrefixCheck = $('#fromQueryPrefix').val();
+			if(($('#typeChosen').val() == '') || ($('#fromQueryString').val() == '') || ($('#selectQueryStringId').val() == '') || (fromQueryPrefixCheck == 'SCHED_'))
+				{
+					alert('Please choose a CI Type or choose a column to display to begin');
+					$('#searching').dialog('close');
+					return false;
+				}else if (document.getElementById('reportOutput_Excel').checked == true){
+				/*
+					var searchType;
+					var searchCIName;
+					var searchAssetType;
+					var searchMarkDelete;
+					var searchEnvCat;
+					var searchVirtual;
+					var searchModel;
+					var searchSerialNumber;
+					var searchAssetID;
+					var searchAssetTag;
+					//var searchAddress;
+					var searchDatasetID;
+					var searchPeople;
+					var searchAddCriteria;
+					var searchSelectQueryString;
+					var searchColsToDisplayID;
+					var searchTblsQuery;
+					var searchTblsAbbrevQuery;
+					var fromQueryPrefix;
+					var searchCLLI;
+					
+					searchCIName = $('#CI_Name').val();
+					searchType = $('#typeChosen').val();
+					searchAssetType = $('#assetTypeChosen').val();
+					searchMarkDelete = $('#MARKASDELETED').val();
+					searchEnvCat = $('#envCatChosen').val();
+					searchVirtual = $('#VIRTUAL').val();
+					searchModel = $('#Model').val();
+					searchSerialNumber = $('#CMDB_SerialNumber').val();
+					searchAssetID = $('#AssetID').val();
+					searchAssetTag = $('#AssetTag').val();
+					//searchAddress = $('#locAddress').val();
+					searchDatasetID = $('#datasetChosen').val();
+					searchHardwareChosen = $('#hardwareChosen').val();
+					searchPeople = $('#peopleChosen').val();
+					searchCLLI = $('#CLLI').val();
+					searchAddCriteria = $('#add_criteria').val();
+					searchSelectQueryString = $('#selectQueryString').val();
+					searchColsToDisplayID = $('#selectQueryStringId').val();
+					searchTblsQuery = $('#fromQueryString').val();
+					searchTblsAbbrevQuery = $('#fromQueryAbbrev').val();
+					fromQueryPrefix = $('#fromQueryPrefix').val();
+					selectQueryStringDisp = $('#selectQueryStringDisp').val();
+					*/
+					var SHOW_UP_DOWN = 0;
+
+					if(document.getElementById('US_chk').checked == true)
+						{
+							SHOW_UP_DOWN = 1;
+						}
+					
+					
+					//excel_results = window.open(encodeURI('index.cfm?do=ah.dspSearchResults_Excel&SHOW_UP_DOWN='+SHOW_UP_DOWN+'&peopleChosen='+searchPeople+'&typeChosen='+searchType+'&CI_NAME='+searchCIName+'&assetTypeChosen='+searchAssetType+'&MARKASDELETED='+searchMarkDelete+'&envCatChosen='+searchEnvCat+'&VIRTUAL='+searchVirtual+'&CMDB_SerialNumber='+searchSerialNumber+'&AssetID='+searchAssetID+'&AssetTag='+searchAssetTag+'&datasetChosen='+searchDatasetID+'&add_criteria='+searchAddCriteria+'&selectQueryStringId='+searchColsToDisplayID+'&fromQueryString='+searchTblsQuery+'&fromQueryAbbrev='+searchTblsAbbrevQuery+'&fromQueryPrefix='+fromQueryPrefix+'&Model='+searchModel+'&selectQueryStringDisp='+selectQueryStringDisp+'&selectQueryString='+searchSelectQueryString+'&hardwareChosen='+searchHardwareChosen+'&CLLI='+searchCLLI));
+					
+					//return false;
+					
+					$('#cmdb_search_form').attr('action','index.cfm?do=ah.dspSearchResults_Excel&SHOW_UP_DOWN='+SHOW_UP_DOWN);
+					$('#cmdb_search_form').attr('target','_blank');
+					//$('#searching').dialog('open');
+					return true;
+					
+				}else{
+					$('#cmdb_search_form').attr('action','index.cfm?do=ah.dspSearchResults5');
+					$('#cmdb_search_form').removeAttr('target');
+					$('#searching').dialog('open');
+					return true;
+				}
+		}
+		
+	function chk_subordinate()
+		{
+			var peopleChosen = '';
+			var peopleChosenSearch;
+			
+			peopleChosen = $('#peopleChosen').val();
+			
+			peopleChosenSearch = peopleChosen.search(',');
+			
+			if (peopleChosenSearch != -1)
+				{
+					document.getElementById('suborChk').checked = false;
+					alert('The Subordinate search needs at least 1 attuid and will only allow 1 attuid to be used.');
+				}else if (peopleChosen == ''){
+					document.getElementById('suborChk').checked = false;
+					alert('The Subordinate search needs at least 1 attuid and will only allow 1 attuid to be used.');
+				}
+		}
+		
+		
+		function EdUsDs()
+		{
+			var includetotal_checked = document.getElementById('include_total').checked;
+			if(includetotal_checked == true)
+			{
+				document.getElementById("US_chk").checked = false;
+				document.getElementById("US_chk").disabled = true;
+				
+			}
+			else
+			{
+				document.getElementById("US_chk").disabled = false;
+			}
+			
+		}
+		
+		
+		
+	function showUPChk()
+		{
+			if(document.getElementById('reportOutput_Excel').checked == true)
+				{
+					
+					if(document.getElementById('include_total').checked == true)
+					{
+						document.getElementById("US_chk").checked = false;
+						document.getElementById("US_chk").disabled = true;
+					}
+					
+					$('#US_lbl').show('slow');
+				}else{
+					$('#US_lbl').hide('slow');
+					
+					document.getElementById('US_chk').checked = false;
+					document.getElementById('US_chk').disabled = false;
+					
+					$('#rel_lbl_No').hide('slow');
+					$('#relationship_Excel_No').hide('slow');
+					$('#relationship_Excel_Yes').hide('slow');
+					$('#rel_lbl_yes').hide('slow');
+				}
+		}
+		
+		function showRelation()
+		{
+			if(document.getElementById('US_chk').checked == true)
+				{
+					$('#rel_lbl_No').show('slow');
+					$('#relationship_Excel_No').show('slow');
+					document.getElementById('relationship_Excel_No').checked = true;
+					$('#relationship_Excel_Yes').show('slow');
+					$('#rel_lbl_yes').show('slow');
+				}
+				else{
+					$('#rel_lbl_No').hide('slow');
+					$('#relationship_Excel_No').hide('slow');
+					$('#relationship_Excel_Yes').hide('slow');
+					$('#rel_lbl_yes').hide('slow');
+				}
+		}
+		$(document).ready(function() {
+					$("#CI_Name").charCounter(255);
+					$("#Model").charCounter(255);
+					$("#AssetID").charCounter(255);
+					$("#AssetTag").charCounter(255);
+					$("#CLLI").charCounter(255);
+					$("#CMDB_SerialNumber").charCounter(255);
+					$("#add_criteria").charCounter(3000);	
+			});	
+	
+	$(document).ready(function() {
+		$('.fg-button').uiBtn();
+	});
+
+</script>
+
+
+</td>
+        </tr>
+    </table>    
+<div id="jalert" style="display:none;"></div>
+<div id="jconfirm" style="display:none;"></div>
+<div id="jprompt" style="display:none;"></div>
+        
+    <table width="100%" border="0" cellspacing="0" cellpadding="2" style="margin-top:50px; margin-bottom:100px;">			
+        <tr>
+            <td class="footer"><a href="#" style="color:#FFFFFF; font-size:130%; margin-left:10px;">tSite</a></td>
+            <td class="footer" align="right" colspan="2">
+                <img class="pointer" src="static/images/techbyott_orange.png" alt="technology by ott" onclick="javascript: window.location='https://itotools.it.att.com/';" />
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="3"><strong>AT&amp;T Proprietary (Internal Use Only)</strong><br />&nbsp;&nbsp;&nbsp;<span style="font-family:calibri; font-size:12px;">Not for use or disclosure outside the AT&amp;T companies except under written agreement</span></td>
+        </tr>
+    </table>
+    <script type="text/javascript">	
+		$(document).ready(function() {
+			// Fade in and out
+			
+			
+				
+			$('.error_message') .slideDown('slow');
+			$('.warning_message') .slideDown('slow') .animate({opacity: 1.0}, 20000) .slideUp('slow');// .fadeOut(2000);
+			$('.message') .slideDown('slow') .animate({opacity: 1.0}, 10000) .slideUp('slow');
+			//Round the corners of the page titles and message boxes
+			$(".page_title").corner("5px");  
+			$(".error_message").corner("5px"); 
+			$(".warning_message").corner("5px"); 
+			$(".message").corner("5px");			
+		});
+    </script>
+</body>
+</html>
