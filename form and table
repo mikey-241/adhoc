@@ -1,0 +1,79 @@
+<form id ="frm1" name="cmdbFormList" action="index.cfm?do=ah.getDoDResults" method="post">
+      <table border=0>
+        
+        
+
+        	
+          <tr><td style="font-weight:bold;">DoD Reports:&nbsp;</td><td>
+            <select name="A0" id="A0" onChange="$('#SearchText').html('Processing...');$('#searching').dialog('open');loadSearchForm($(this).val());" style="width:300px;">
+            <option value="0"></option>
+        	
+            		<option value="2008" >Asset Identification</option>
+            
+            		<option value="2011" >Backup Status Report</option>
+            
+            		<option value="2002" >Counts by TD, Product, Callout Group & DBA</option>
+            
+            		<option value="2005" >Custom uPickit Report</option>
+            
+            		<option value="2004" >DBA Support Assignments</option>
+            
+            		<option value="2001" >DBMS Application Report</option>
+            
+            		<option value="2009" >DBMS Relationship Types</option>
+            
+            		<option value="2012" >My DoD Reports</option>
+            
+            		<option value="2003" >Operational DBAs - Teams and Members</option>
+            
+            		<option value="2010" >Staged Reports</option>
+            
+            </select>
+          </td></tr>
+          <input type="hidden" name="SAVED_SEARCH_ID" value="">
+         
+          	<input type="hidden" name="Old_SAVED_Report_ID" id="Old_SAVED_Report_ID" value="">
+          
+  	</table><br />
+</form>
+
+
+<div id="searchForm"></div>
+<script type="text/javascript">
+		function loadSearchForm(id) {
+			
+			searchNameV = $('#Old_SAVED_Report_ID').val();
+			//alert(searchNameV);
+			if (id != searchNameV)
+			{
+					$('#Old_SAVED_Report_ID').val('');
+					$('#searchfiltered').css('display','none'); /*.css(display,'none');*/
+					
+			}
+			/* Against request 1169384 - building new code for Staged Reports (id = 2010) */
+			if (id == 2010)
+			{
+				window.location.href = "index.cfm?do=ah.dspStagedRpts";
+			}
+			else if(id == 2012)
+			{
+				window.location.href = "index.cfm?do=ah.dspMyDodReports";
+			}
+			else
+			{
+				//Ajax call to populate Members
+			$.ajax({
+				cache: false,
+				//dataType: "json",
+				type: 'post',
+				url: 'index.cfm?do=ah.ajaxLoadForm',
+				data: 'id=' + id,
+				success: function(msg) {$('#searchForm').html(msg);$("#searching").dialog('close');},
+				error: function(msg){alert('There was an error');$("#searching").dialog('close');}
+			});
+		}
+	}
+		
+</script></td>
+        </tr>
+    </table>    
