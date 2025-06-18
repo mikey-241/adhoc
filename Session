@@ -1,0 +1,14 @@
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
+
+# Replace with your actual DB URL
+DATABASE_URL = "sqlite:///dod_reporting.db"  # or "oracle+oracledb://user:pass@host:port/db"
+
+# Create the engine
+engine = create_engine(DATABASE_URL, echo=True)
+
+# Configure session factory
+session_factory = sessionmaker(bind=engine)
+
+# Thread-safe session (used in web apps)
+db_session = scoped_session(session_factory)
