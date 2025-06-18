@@ -1,0 +1,42 @@
+ 1. qryDoDReports.cfm → reports_service.py
+
+Copy code
+# services/reports_service.py
+from app.db import db_session
+from models import ScmFieldValues
+
+def get_active_dod_reports():
+    return db_session.query(ScmFieldValues)\
+        .filter_by(field_id=2000, active=1)\
+        .order_by(ScmFieldValues.field_option)\
+        .all()
+🔹 2. dspDoDReports.cfm → dsp_dod_reports.html (Jinja Template)
+HTML Form
+
+Dropdown list
+
+JavaScript with loadSearchForm(id) AJAX
+
+Place JS into a separate file and reference it.
+
+🔹 3. getDoDResults.cfm → dod_routes.py
+
+Copy code
+# routes/dod_routes.py
+from flask import Blueprint, render_template, request
+from services.reports_service import get_active_dod_reports
+
+dod_bp = Blueprint('dod', __name__)
+
+@dod_bp.route("/dod/reports", methods=["GET", "POST"])
+def display_dod_reports():
+    saved_search_id = request.form.get("SAVED_SEARCH_ID", "")
+    active_reports = get_active_dod_reports()
+    return render_template("dod/dsp_dod_reports.html", reports=active_reports, saved_search_id=saved_search_id)
+
+@dod_bp.route("/dod/results", methods=["POST"])
+def get_dod_results():
+    # This replaces getDoDResults.cfm
+    # Include logic to handle xfa.* actions and templates like dspDoDResults
+    # Can use sub-functions or service layers
+    return render_template("dod/dsp_dod_results.html")
